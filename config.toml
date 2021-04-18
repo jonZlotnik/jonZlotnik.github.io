@@ -37,7 +37,7 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
   themeColor = "#494f5c"
   # themeColor = "#1c1c1c"
 
-  homeSubtitle = "Good at thinking."
+  homeSubtitle = "A work in progress."
 
   footerCopyright = ' &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
   # bgImg = ""  # Homepage background-image URL
@@ -73,11 +73,11 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
 [menu]
 
   [[menu.main]]
-    name = "Posts"
-    url = "posts/"
-    weight = 10
-
-  [[menu.main]]
     name = "About"
     url = "about-me/"
+    weight = 10
+  
+  [[menu.main]]
+    name = "Stories"
+    url = "posts/"
     weight = 20
