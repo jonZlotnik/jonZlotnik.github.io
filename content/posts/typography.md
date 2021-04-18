@@ -8,8 +8,8 @@ tags:
   - Typography
 ---
 
-{{< flickr "DSC_1210-Edit-Edit"
-           ""
+{{< flickr "Soul Mate"
+           "My coach's bebe horse."
            "https://www.flickr.com/photos/189099544@N08/50039020502/"
            "https://live.staticflickr.com/65535/50039020502_a604b1a5c1_z.jpg" >}}
 
