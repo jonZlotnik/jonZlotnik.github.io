@@ -78,6 +78,11 @@ googleAnalytics = "UA-194885447-1"
     weight = 10
   
   [[menu.main]]
+    name = "Resume"
+    url = "resume/"
+    weight = 10
+  
+  [[menu.main]]
     name = "Stories"
     url = "posts/"
     weight = 20
