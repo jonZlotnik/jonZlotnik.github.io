@@ -25,7 +25,7 @@ He enjoys building systems with the latest advancements in cryptography and clou
 
 Jon develops software system components consumed by end-users and other developers.
 He has enterprise experience in Python, C++, .NET, Java, Go, Node.js, Qt, Angular, Microsoft Azure, Google Cloud Platform, and Amazon Web Services.
-He is comfortable developing in Windows, MacOS, and Linux, and builds systems for embedded devices, Windows or Linux servers, Kubernetes clusters, and serverless architectures.
+He is comfortable developing in Windows, macOS, and Linux and builds systems for embedded devices, Windows or Linux servers, Kubernetes clusters, and serverless architectures.
 
 
 ### Languages
@@ -63,7 +63,7 @@ Montreal, QC
 
 - Designed and developed PKI enrollment software for over 2000 employees to register company-issued YubiKeys as a means for passwordless authentication employing FIPS PIV standards.
 - Architected a REST API and web app as the front end to a proof of concept secret management framework for developers and non-technical users to consume cryptographic material and services.
-- Proposed and tested containerized deployment models in Azure for Hashicorp’s Vault server. Hard requirements included high-availability, and integrity.
+- Proposed and tested containerized deployment models in Azure for Hashicorp’s Vault server. Hard requirements included high availability and integrity.
 - Extracted actionable intelligence with Splunk as a SIEM from data sources throughout the company. Analysed logs from endpoints, virtual machines, domain controllers, and other vital company infrastructure.
 - Worked with .NET, Python, C++, Qt, Angular, and Azure Cloud to build and deploy awesome cryptography projects.
 
