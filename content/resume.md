@@ -17,17 +17,16 @@ _________________________________
 
 ### Information Security
 
-Developed and architected enterprise-scale security software systems while working in teams and alone.
-Gained industry experience in applied cryptography:
-implementing systems with opensource and proprietary software,
-cloud computing services, public key infrastructure (PKI),
-and hardware supporting PIV, PGP, and FIDO.
+Jon architects and develops enterprise-scale security software systems both in teams and solo.
+He is experienced in applied cryptography and implementing systems to interface with open-source and proprietary software.
+He enjoys building systems with the latest advancements in cryptography and cloud security, as well as, modernizing public key infrastructure and hacking on crypto hardware.
 
 ### Fullstack Developer
 
-Developed software system components used by more than 2000 employees.
-Gained industry experience in .NET, Powershell, Python, Qt, Angular, and Azure Cloud.
-Additional project experience with C, C++, Go, Java, Node.js, and Google Cloud Platform.
+Jon develops software system components consumed by end-users and other developers.
+He has enterprise experience in Python, C++, .NET, Java, Go, Node.js, Qt, Angular, Microsoft Azure, Google Cloud Platform, and Amazon Web Services.
+He is comfortable developing in Windows, MacOS, and Linux, and builds systems for embedded devices, Windows or Linux servers, Kubernetes clusters, and serverless architectures.
+
 
 ### Languages
 
@@ -52,24 +51,30 @@ _________________________________
 November 2020 - Present \
 Montreal, QC
 
+- Extending custom Python libraries to support large-scale Kubernetes pod identity bootstrapping.
+- Designing deployment models for large-scale Kubernetes clusters to consume and store secrets safely.
+- Implementing critical cryptographic system automation to interface with Hashicorp's Vault and Thales' vormetric tokenization services.
+- Monitoring behaviour of critical systems in production, staging, and development environments with Splunk and Datadog.
+
+
 **Identity Management and Cryptographic Solutions** @ Genetec \
 April 2019 - October 2020 \
 Montreal, QC
 
-- Designed and developed PKI enrollment software for over 2000 employees to register company-issued YubiKeys as a means for passwordless authentication.
+- Designed and developed PKI enrollment software for over 2000 employees to register company-issued YubiKeys as a means for passwordless authentication employing FIPS PIV standards.
 - Architected a REST API and web app as the front end to a proof of concept secret management framework for developers and non-technical users to consume cryptographic material and services.
 - Proposed and tested containerized deployment models in Azure for Hashicorp’s Vault server. Hard requirements included high-availability, and integrity.
-- Extracted actionable intelligence with Splunk from data sources throughout the company. Analysed logs from endpoints, virtual machines, domain controllers, and other vital company infrastructure.
-- Honed my skills in Python, C++, .NET, Angular, and Azure Cloud while working on cool cryptography projects.
+- Extracted actionable intelligence with Splunk as a SIEM from data sources throughout the company. Analysed logs from endpoints, virtual machines, domain controllers, and other vital company infrastructure.
+- Worked with .NET, Python, C++, Qt, Angular, and Azure Cloud to build and deploy awesome cryptography projects.
 
 **Security Operations Center Analyst** @ Genetec \
 September 2018 - April 2019 \
 Montreal, QC
 
-- Developed a proof of concept web scraping, monitoring, and alerting system for automated IOC (indicator of compromise) discovery on the clear web.
-- Wrote and implemented a tailored, interactive, software vendor security assessment questionnaire based on Google’s open source VSAQ project.
+- Developed a proof of concept web scraping, monitoring, and alerting system for automated IOC (indicator of compromise) discovery on the clear and dark web.
+- Wrote and deployed a tailored and interactive vendor security assessment questionnaire based on Google’s open-source VSAQ project.
 - Consulted on Genetec’s effort to improve domain and e-mail security by proposing changes to DNS records and e-mail filtering policies.
-- Created Splunk dashboards to visualize network activity patterns and identify anomolies.
+- Created Splunk dashboards to visualize network activity patterns and identify anomalies.
 - Ran vulnerability scans and performed red-team operations in a lab and against systems in QA & dev environments. Also, performed manual threat hunting activities & proactive research for indicators of compromise.
 
 **Lifeguard, Swim Instructor, Sailing Instructor**
@@ -90,7 +95,7 @@ Summers 2014, 2015
 Montreal, QC
 
 - Managed painting crews of 2-4 painters per job site and painted alongside crew members.
-- Communicated the client’s requirements and preferences to my crew to ensure client satisfaction.
+- Communicated the clients' requirements and preferences to my crew to ensure client satisfaction.
 
 _________________________________
 
@@ -99,7 +104,13 @@ _________________________________
 ### Robotics and Embedded Systems
 
 - Raspberry Pi, Beaglebone, Espressif/NodeMCU, Arduino
-- Bare metal C(++), Arduino, PlatformIO
+- Bare metal C(++), Arduino, MicroPython PlatformIO
+  
+### Infosec
+
+- Pentesting, Lock Picking
+- OSINT
+- USBArmory, Yubikey
 
 ### UI/UX Design
 
@@ -108,7 +119,7 @@ _________________________________
 
 ### Photography
 
-- DSLR, Mirrorless, Fullframe & APS-C
+- DSLR & Mirrorless (Full-frame & APS-C)
 - Adobe Photoshop and Lightroom
 
 ### Visual Effects and Video Editing
@@ -122,12 +133,6 @@ _________________________________
 - Unity3D
 - Autodesk Maya
 - Blender
-
-### Infosec
-
-- Pentesting, Lock Picking
-- OSINT
-- USBArmory, Yubikey
 
 _________________________________
 
