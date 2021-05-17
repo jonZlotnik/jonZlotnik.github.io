@@ -4,7 +4,8 @@ date = "2021-04-17"
 +++
 
 ## Professional
-Jon Zlotnik is an enthusiastic and creative software developer and information security specialist. His most recent experience includes applied cryptography, cloud security, identity management, and enterprise software tools development.
+Jon Zlotnik is an enthusiastic and creative software developer and applied cryptographer.
+His most recent industry work consists of developing cryptographic systems for the enterprise, improving cloud security, streamlining identity management, and extending enterprise security tooling.
 
 He loves working on proof-of-concept, and highly innovative projects, as well as pushing the limits of cloud technology.
 
