@@ -7,7 +7,6 @@ Jonathan Zlotnik
 
 contact@jonzlotnik.ca \
 (514) 833-7361 | Montreal, QC \
-https://jonzlotnik.github.io \
 https://linkedin.com/in/jon-zlotnik \
 https://github.com/jonzlotnik
 
