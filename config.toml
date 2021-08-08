@@ -83,6 +83,6 @@ googleAnalytics = "UA-194885447-1"
     weight = 10
   
   [[menu.main]]
-    name = "Stories"
-    url = "posts/"
+    name = "Photography"
+    url = "photography/"
     weight = 20
