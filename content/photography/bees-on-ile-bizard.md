@@ -2,7 +2,7 @@
 title: "Bees on Ile-Bizard"
 date: 2021-07-10
 draft: false
-featuredImg: ""
+featuredImg: "/photography/bees-on-ile-bizard/other_bee_drinking_nectar.jpg"
 tags: 
   - bees
   - pollen
@@ -14,10 +14,10 @@ My 55mm Nikkor Micro f/2.8 was attached when we fell upon a field of buzzing whi
 
 ![img](/photography/bees-on-ile-bizard/other_bee_drinking_nectar.jpg)
 
-The goals became to get (1) a bee drinking with its tongue out, (2) a pollen buldge, and (3) a bumble bee.
+The goals were to get (1) a bee drinking with its tongue out, (2) a pollen bulge, and (3) a bumblebee.
 
 ![img](/photography/bees-on-ile-bizard/bee_with_pollen.jpg)
 
-It took a little while, but we were successful.
+It took a little while, but we were successful!
 
 ![img](/photography/bees-on-ile-bizard/bumble_bee_drinking_nectar.jpg)
