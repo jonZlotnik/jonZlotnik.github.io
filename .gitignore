@@ -1,6 +1,5 @@
 # Binaries for programs and plugins
 *.exe
-*.exe~
 *.dll
 *.so
 *.dylib
@@ -25,3 +24,5 @@ hugo_stats.json
 hugo.exe
 hugo.darwin
 hugo.linux
+
+node_modules/
