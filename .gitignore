@@ -1,28 +1,18 @@
-# Binaries for programs and plugins
-*.exe
-*.dll
-*.so
-*.dylib
+/public
+resources
+node_modules
+.env
+*.env
+*.env
+.env.*
+/_cache
+/data
+/.vscode
+.npmrc
+# Local Netlify folder
+.netlify
 
-# Test binary, built with `go test -c`
-*.test
-
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
-
-# Dependency directories (remove the comment below to include it)
-# vendor/
-
-
-### Hugo ###
-# Generated files by hugo
-/public/
-/resources/_gen/
-hugo_stats.json
-
-# Executable may be added to repository
-hugo.exe
-hugo.darwin
-hugo.linux
-
-node_modules/
+/assets/css/index.css
+/themes/hugo-twcss/assets/css/index.css
+/themes/twjit/assets/css/index.css
+.hugo_build.lock

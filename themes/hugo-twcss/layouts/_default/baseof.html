@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html class="bg-white dark:bg-black" lang="en" charset="utf-8" lang="en" charset="utf-8">
+
+{{ partial "head.html" . }}
+
+<body class="bg-white dark:bg-black dark:text-gray-100">
+  {{ partial "header.html" . }}
+  <div id="content-main-hugo">
+  {{- block "main" . -}}{{- end }}
+  </div>
+  {{- partial "footer.html" . -}}
+  <script src="/js/twitterMeta.js" charset="utf-8" defer></script>
+    <script src="/js/lazyload.min.js" charset="utf-8"></script>
+    <script>
+      var lazyLoadInstance = new LazyLoad({
+        threshold: 150,
+      })
+    </script>
+  </body>
+
+</html>

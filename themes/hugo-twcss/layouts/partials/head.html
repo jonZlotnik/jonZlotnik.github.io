@@ -1,0 +1,37 @@
+
+  <head>
+    {{ hugo.Generator }}
+    
+    {{- if .IsHome }}
+    <title>{{ .Site.Title }}</title>
+    <meta property="og:title" content="{{ .Site.Title }}" />
+    {{- else }}
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    <meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}" />
+    {{- end }}
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{- if .IsHome }}
+    <meta name="description" content="{{ .Site.Params.Description }}">
+    <meta property="og:description" content="{{ .Site.Params.Description }}" />
+    {{- else }}
+    <meta name="description" content="{{ .Params.Description }}">
+    <meta property="og:description" content="{{ .Params.Description }}" />
+    {{- end }}
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+
+    <!-- CSS from PostCSS -->
+    {{ $css := resources.Get "css/index.css" }}
+    {{ $css := $css | resources.PostCSS (dict "outputStyle" "compressed") | fingerprint }}
+  
+    <link rel="preload" as="style" href="{{ $css.RelPermalink }}">
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" type="text/css">
+
+  </head>
+  
