@@ -16,20 +16,10 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       white: '#ffffff',
-      black: colors.stone['100'],
-      gray: colors.gray,
+      black: colors.stone['900'],
+      gray: colors.neutral,
       yellow: colors.yellow,
-      blue: {
-        '100': '#bbeeff',
-        '200': '#00aaff',
-        '300': '#0088ff',
-        '400': '#0033ff',
-        '500': '#0000ff',
-        '600': '#0000bb',
-        '700': '#0000aa',
-        '800': '#000088',
-        '900': '#000066',
-      },
+      blue: colors.blue,
     },
   },
   variants: {
