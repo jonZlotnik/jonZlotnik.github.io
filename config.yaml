@@ -49,6 +49,6 @@ menu:
         weight: 100
       - identifier: "posts"
         name: "Posts"
-        title: "This site’s posts"
+        title: "This site's posts"
         url: "/posts/"
         weight: 110

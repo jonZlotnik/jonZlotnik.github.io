@@ -11,7 +11,7 @@ A few words about you.  Your opening text goes here.
 
 ## In-article heading --- it's an H2 because your title is the H1
 
-And after another paragraph or two or three, you may want to add a subheading, which would be an H3, so it would be like the following.
+And afterr another paragraph or two or three, you may want to add a subheading, which would be an H3, so it would be like the following.
 
 ### Subheading (H3)
 
