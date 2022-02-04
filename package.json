@@ -8,7 +8,8 @@
     "build": "NODE_ENV=production npm-run-all clean prelim:twcss prod:*",
     "prelim:twcss": "./node_modules/tailwindcss/lib/cli.js -i ./themes/hugo-twcss/assets/css/tw.css -o ./themes/hugo-twcss/assets/css/index.css --jit",
     "dev:twcssw": "./node_modules/tailwindcss/lib/cli.js -i ./themes/hugo-twcss/assets/css/tw.css -o ./themes/hugo-twcss/assets/css/index.css --jit -w",
-    "dev:hugo": "hugo server",
+    "devblah:hugo": "IPADDR=$(ip addr show dev eth0 | grep 'inet ' | cut -d/ -f1 | awk '{ print $2}'); hugo server --bind $IPADDR --baseURL=http://$IPADDR",
+    "dev:hugolocal": "IPADDR=localhost; hugo server --bind $IPADDR --baseURL=http://$IPADDR",
     "prod:twcss": "./node_modules/tailwindcss/lib/cli.js -i ./themes/hugo-twcss/assets/css/tw.css -o ./themes/twjit/assets/css/index.css --jit --minify",
     "prod:hugo": "hugo --gc --minify"
   },

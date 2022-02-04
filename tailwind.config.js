@@ -18,6 +18,8 @@ module.exports = {
       white: '#ffffff',
       black: colors.stone['900'],
       gray: colors.neutral,
+      red: colors.red,
+      green: colors.green,
       yellow: colors.yellow,
       blue: colors.blue,
     },
