@@ -26,7 +26,8 @@
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"bungcip.better-toml",
-		"davidanson.vscode-markdownlint"
+		"davidanson.vscode-markdownlint",
+		"bradlc.vscode-tailwindcss"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -35,9 +36,9 @@
 	],
 	"features": {
 		"go": "latest",
-		"git": "latest",
-		"homebrew": "latest",
-		"golang": "latest"
+	// 	"git": "latest",
+	// 	"homebrew": "latest",
+	// 	"golang": "latest"
 	}
 
 	// Use 'postCreateCommand' to run commands after the container is created.
