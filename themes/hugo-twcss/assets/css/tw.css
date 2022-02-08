@@ -88,7 +88,7 @@
     @apply text-xs;
   }
   
-  a, a:focus, a:hover, a:active {
+  /* a, a:focus, a:hover, a:active {
     @apply no-underline border-b border-solid border-blue-500;
   }
   
@@ -102,7 +102,7 @@
   
   sup a, a.previous, a.next, .footnote-return {
     @apply border-b-0;
-  }
+  } */
   
   #nav-toggle:checked + #navMenu {
     @apply block;
