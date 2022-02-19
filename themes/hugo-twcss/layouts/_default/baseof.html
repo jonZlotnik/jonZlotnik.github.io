@@ -15,10 +15,10 @@
     {{- block "main" . -}}{{- end }}
     {{- partial "footer.html" . -}}
     {{/*  START - for spacing...  */}}
-    {{- partial "navigation.html" . -}}
+    
     {{/*  END - for spacing...  */}}
     </div>
-  
+  {{ partial "navigation.html" . }}
   <script src="/js/twitterMeta.js" charset="utf-8" defer></script>
     <script src="/js/lazyload.min.js" charset="utf-8"></script>
     <script>

@@ -1,15 +1,15 @@
-<div class="container flex flex-col items-center">
-    <h1 class="text-5xl font-normal">Jon Zlotnik</h1>
+<div class="container flex flex-col items-center border-2 border-red-900">
+    <h1 class="text-5xl font-normal border-2 border-yellow-400">Jon Zlotnik</h1>
     <div class="text-lg text-center"></div>
     <div class="my-8">
         <a style="border-bottom-width: 0;" href="mailto:me@jonzlotnik.info" target="_blank"><button>
             {{ partial "svgMailIcon.html" . }}
         </button></a>
-        <button class="mx-8">
+        <a class="mx-8" style="border-bottom-width: 0;" href="https://github.com/jonZlotnik" target="_blank"><button>
             {{ partial "svgGithubIcon.html" . }}
-        </button>
-        <button>
+        </button></a>
+        <a style="border-bottom-width: 0;" href="https://www.linkedin.com/in/jonzlotnik/" target="_blank"><button>
             {{ partial "svgLinkedInIcon.html" . }}
-        </button>
+        </button></a>
     </div>
 </div>

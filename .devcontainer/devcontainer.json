@@ -27,7 +27,9 @@
 	"extensions": [
 		"bungcip.better-toml",
 		"davidanson.vscode-markdownlint",
-		"bradlc.vscode-tailwindcss"
+		"bradlc.vscode-tailwindcss",
+		"miqh.core-theme",
+		"golang.go"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
