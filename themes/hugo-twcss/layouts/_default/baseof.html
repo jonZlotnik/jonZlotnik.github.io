@@ -11,7 +11,7 @@
   <div class="container m-auto flex flex-col justify-center h-screen">
     {{ partial "title.html" }}
   </div>
-  <div id="content-main-hugo">
+  <div id="content-main-hugo" class="flex flex-col items-center">
     {{- block "main" . -}}{{- end }}
     {{- partial "footer.html" . -}}
     {{/*  START - for spacing...  */}}
