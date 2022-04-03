@@ -29,7 +29,10 @@
 		"davidanson.vscode-markdownlint",
 		"bradlc.vscode-tailwindcss",
 		"miqh.core-theme",
-		"golang.go"
+		"golang.go",
+		"budparr.language-hugo-vscode",
+		"eliostruyf.vscode-hugo-themer",
+		"fivethree.vscode-hugo-snippets"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
