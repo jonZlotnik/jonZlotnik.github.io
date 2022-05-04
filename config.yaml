@@ -39,16 +39,15 @@ markup:
     highlight:
       guessSyntax: true
       noClasses: false
-
-menu:
-    main:
-      - identifier: "about"
-        name: "About"
-        title: "Whatever you call your 'about' page"
-        url: "/about/"
-        weight: 100
-      - identifier: "posts"
-        name: "Posts"
-        title: "This site's posts"
-        url: "/posts/"
-        weight: 110
+# menu:
+#     main:
+#       - identifier: "about"
+#         name: "About"
+#         title: "Whatever you call your 'about' page"
+#         url: "/about/"
+#         weight: 100
+#       - identifier: "posts"
+#         name: "Posts"
+#         title: "This site's posts"
+#         url: "/posts/"
+#         weight: 110
