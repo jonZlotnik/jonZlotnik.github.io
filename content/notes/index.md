@@ -1,10 +1,12 @@
 ---
-title: "Your UNIQUE title here"
+title: "Notes"
 description: "Your UNIQUE description here."
 author: Your name here
 date: 2018-09-14T15:00:00-05:00
 lastmod: 2020-04-22T19:30:00-05:00
 draft: false 
+menu: "main"
+twColor: "green-400"
 ---
 
 A few words about you.  Your opening text goes here.

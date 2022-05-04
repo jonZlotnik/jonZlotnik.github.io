@@ -2,6 +2,17 @@
             font-sans text-lg p-3 
             bg-black
             pointer-events-auto">
+    {{ $currentPage := . }}
+    {{ range .Site.Menus.main }}
+    {{ $isMenuCurrent := $currentPage.IsMenuCurrent "main" . }}
+        <a href="{{.URL}}">
+            {{- with .Page -}}
+            <button class="w-32 h-12 rounded-full {{ if $isMenuCurrent }} text-gray-800 bg-{{ .Params.twColor }} {{ end }} hover:text-gray-800">
+                {{ .Title }} {{.Params.twColor}}
+            </button>
+            {{- end -}}
+        </a>
+    {{ end }}
     <a href="/photos/">
         <button class="w-32 h-12 rounded-full hover:text-gray-800 hover:bg-red-400">
             Photos
