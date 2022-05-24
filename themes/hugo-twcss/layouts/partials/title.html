@@ -3,13 +3,40 @@
     <div class="text-lg text-center"></div>
     <div class="my-8">
         <a style="border-bottom-width: 0;" href="mailto:me@jonzlotnik.info" target="_blank"><button>
-            {{ partial "svgMailIcon.html" . }}
-        </button></a>
+                {{ partial "svgMailIcon.html" . }}
+            </button></a>
         <a class="mx-8" style="border-bottom-width: 0;" href="https://github.com/jonZlotnik" target="_blank"><button>
-            {{ partial "svgGithubIcon.html" . }}
-        </button></a>
+                {{ partial "svgGithubIcon.html" . }}
+            </button></a>
         <a style="border-bottom-width: 0;" href="https://www.linkedin.com/in/jonzlotnik/" target="_blank"><button>
-            {{ partial "svgLinkedInIcon.html" . }}
-        </button></a>
+                {{ partial "svgLinkedInIcon.html" . }}
+            </button></a>
     </div>
+{{ if not .IsHome }}
+    <div id="scrollIndicator" class="justify-self-end fixed bottom-28 right-10" style="display: none;">
+        {{ partial "scrollIndicator2.html" . }}
+    </div>
+    <script>
+        $(document).ready(function() {
+            
+                setTimeout(function() {
+                    if ($(this).scrollTop() <= 1) {
+                    $('#scrollIndicator').fadeIn(1000);
+                    }
+                }, 3000)
+            
+        })
+        $(window).scroll(function() {
+            if ($(this).scrollTop() <= 1) {
+                setTimeout(function() {
+                    if ($(this).scrollTop() <= 1) {
+                    $('#scrollIndicator').fadeIn(1000);
+                    }
+                }, 3000)
+            } else {
+                $('#scrollIndicator').fadeOut(250);
+            }
+         });
+    </script>
+{{end}}
 </div>
