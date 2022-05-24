@@ -2,10 +2,17 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   mode: "jit",
-  purge: [
+  content: [
     "./content/**/*.md",
     "./content/**/*.html",
-    "./themes/hugo-twcss/layouts/**/*.html"
+    "./themes/hugo-twcss/layouts/**/*.html",
+  ],
+  safelist: [
+    // NO IDEA WHY, BUT I NEED THIS FOR THE NAVIGATION COLORS TO WORK.
+    // I HATE FRONTEND SO MUCH.
+    'bg-red-400',
+    'bg-blue-400',
+    'bg-green-400'
   ],
   darkMode: 'media',
   theme: {

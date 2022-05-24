@@ -1,9 +1,10 @@
 module.exports = {
-  plugins: [
-    require('postcss-import')({
+  plugins: {
+    "postcss-import": {
       path: ['themes/hugo-twcss/assets/css']
-    }),
-    require('tailwindcss/nesting'),
-    require("autoprefixer"),
-  ]
+    },
+    'tailwindcss/nesting': {},
+    tailwindcss: {},
+    autoprefixer: {},
+  }
 }
