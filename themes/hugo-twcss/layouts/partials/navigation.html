@@ -7,13 +7,13 @@
     {{ $isMenuCurrent := $currentPage.IsMenuCurrent "main" . }}
         <a href="{{.URL}}">
             {{- with .Page -}}
-            <button class="w-32 h-12 rounded-full {{ if $isMenuCurrent }} text-gray-800 bg-{{ .Params.twColor }} {{ end }} hover:text-gray-800">
-                {{ .Title }} {{.Params.twColor}}
+            <button class="mx-2 w-32 h-12 rounded-full {{ if $isMenuCurrent }}text-gray-800 bg-{{.Params.twColor}}{{ end }} hover:text-gray-800 hover:bg-{{.Params.twColor}}">
+                {{ .Title }}
             </button>
             {{- end -}}
         </a>
     {{ end }}
-    <a href="/photos/">
+    {{/*  <a href="/photos/">
         <button class="w-32 h-12 rounded-full hover:text-gray-800 hover:bg-red-400">
             Photos
         </button>
@@ -23,5 +23,5 @@
     </button>
     <button class="w-32 h-12 rounded-full hover:text-gray-800 hover:bg-green-400">
         Notes
-    </button>
+    </button>  */}}
 </nav>
