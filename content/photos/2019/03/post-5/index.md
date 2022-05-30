@@ -5,7 +5,7 @@ description: "The UNIQUE description for Post 5." # Quotation marks allow colons
 author: Your name goes here
 date: 2019-03-08T22:08:00-06:00
 lastmod: 2020-01-01T08:39:00-06:00 # Comment-out this line with a # if content is unchanged
-draft: false # Make it "true" if you don't want Hugo to "publish" yet
+draft: true # Make it "true" if you don't want Hugo to "publish" yet
 featured_image: swan-1639154_1280x854.jpg # Or whatever image you want to use
 featured_image_alt: A baby swan swimming # Always include an ALT tag for accessibility
 featured_image_caption: "Image: AnnRos; Pixabay" # Quotation marks allow colons, semicolons, etc.

@@ -1,5 +1,5 @@
 <div class="container flex flex-col items-center">
-    <h1 class="text-5xl font-normal">Jon Zlotnik</h1>
+    <h1 class="text-5xl font-normal"><a href="{{site.BaseURL}}">Jon Zlotnik</a></h1>
     <div class="text-lg text-center"></div>
     <div class="my-8">
         <a style="border-bottom-width: 0;" href="mailto:me@jonzlotnik.info" target="_blank"><button>
@@ -13,7 +13,7 @@
             </button></a>
     </div>
 {{ if not .IsHome }}
-    <div id="scrollIndicator" class="justify-self-end fixed bottom-28 right-10" style="display: none;">
+    <div id="scrollIndicator" class="fixed bottom-28 right-10" style="display: none;">
         {{ partial "scrollIndicator2.html" . }}
     </div>
     <script>
