@@ -5,7 +5,7 @@ description: "The UNIQUE description for Post 6." # Quotation marks allow colons
 author: Your name goes here
 date: 2019-06-08T20:25:00-05:00
 lastmod: 2019-07-25T19:05:00-05:00 # Comment-out this line with a # if content is unchanged
-draft: false # Make it "true" if you don't want Hugo to "publish" yet
+draft: true # Make it "true" if you don't want Hugo to "publish" yet
 featured_image: MailMate_screen_cap_1280x720.jpg # Or whatever image you want to use
 featured_image_alt: Screen capture of the MailMate app # Always include an ALT tag for accessibility
 featured_image_caption: "Image: Screen capture of MailMate, with its Latin-displaying “distortion mode” engaged for privacy’s sake" # Quotation marks allow colons, semicolons, etc.

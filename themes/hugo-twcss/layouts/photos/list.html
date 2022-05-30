@@ -35,12 +35,12 @@
                 margin: 0;
             }
         </style>
-        {{/*  <h1>{{.Page}}</h1>  */}}
+        <h1 id="title" class="mb-16 pt-14 font-light text-5xl">{{.Title}}</h1>
         <!-- Ranges through content/photos/*.md -->
         {{ range .Pages }}
-        <div class="max-w-3xl w-full mb-52">
+        <div class="max-w-3xl w-full mb-28">
             <a href="{{.Permalink}}">
-                <h2 class="text-xl ml-3 font-semibold text-white decoration-1">{{.Title}}</h2>
+                <h2 class="text-2xl ml-3 font-semibold text-white decoration-1">{{.Title}}</h2>
             </a>
 
             {{/*  {{ with .Resources.ByType "image" }}
@@ -58,11 +58,11 @@
                 {{ end }}
                 {{ end }}
             </div>
-            <div>
-                <span>
-                    This is the text describing the images above...
-                </span>
-                <a class=""> See more</a>
+            <div class="pl-2 pr-3 flex flex-col">
+                <p>
+                    {{.Description}}
+                </p>
+                <a class="underline underline-offset-4 place-self-end mt-3" href="{{.Permalink}}#title">Continue reading...</a>
             </div>
         </div>
         {{ end }}

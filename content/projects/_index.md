@@ -2,7 +2,7 @@
 
 title: Projects
 description: Projects
-author: Bryce Wray
+author: Jonathan Zlotnik
 draft: false
 menu: "main"
 
