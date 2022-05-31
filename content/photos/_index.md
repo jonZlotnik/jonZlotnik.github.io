@@ -15,5 +15,3 @@ menu: "main"
 twColor: "red-400"
 
 ---
-
-Hello, this is the context area!
