@@ -35,7 +35,7 @@
                 margin: 0;
             }
         </style>
-        <h1 id="title" class="mb-16 pt-14 font-light text-5xl">{{.Title}}</h1>
+        <h1 id="title" class="mb-16 mt-8 pt-4 font-light text-5xl">{{.Title}}</h1>
         <!-- Ranges through content/photos/*.md -->
         {{ range .Pages }}
         <div class="max-w-3xl w-full mb-28">
@@ -49,13 +49,13 @@
             <img src="{{ .RelPermalink }}" />
             {{ end }}
             {{ end }} */}}
-            <div class="carousel mt-4 mb-8"
-                data-flickity='{ "imagesLoaded": true, "percentPosition": false,  "prevNextButtons": false, "adaptiveHeight": true, "fullscreen": true }'>
+            <div class="carousel mt-4 mb-8 overflow-y-visible" style="padding-bottom: 0;"
+                data-flickity='{ "imagesLoaded": true, "percentPosition": false,  "prevNextButtons": true, "adaptiveHeight": true, "fullscreen": true }'>
                 {{ $image := (.Page.Resources.ByType "image") }}
                 {{ with $image }}
                 {{ range . }}
                 {{/*  {{ $resized := .Fill "150x115 q20" }} */}}
-                <img class="carousel-cell max-w-full w-auto h-auto mx-20 my-auto" src="{{ .RelPermalink }}" />
+                <img class="carousel-cell max-w-full w-auto h-auto mx-20 my-auto" style="max-height: 90vh;" src="{{ .RelPermalink }}" />
                 {{ end }}
                 {{ end }}
             </div>
