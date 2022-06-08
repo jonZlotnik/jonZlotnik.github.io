@@ -1,4 +1,4 @@
-<nav class="w-full flex flex-row justify-center 
+<nav id="navbar" class="w-full flex flex-row justify-center 
             font-sans text-lg p-3 
             bg-black
             pointer-events-auto">
@@ -25,3 +25,15 @@
         Notes
     </button>  */}}
 </nav>
+<script>
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+      var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        document.getElementById("navbar").style.visibility = "visible";
+      } else {
+        document.getElementById("navbar").style.visibility = "hidden";
+      }
+      prevScrollpos = currentScrollPos;
+    } 
+</script>
