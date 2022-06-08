@@ -27,13 +27,17 @@
 </nav>
 <script>
     var prevScrollpos = window.pageYOffset;
+    var prevScrollposTime = Date.now();
     window.onscroll = function() {
-      var currentScrollPos = window.pageYOffset;
-      if (prevScrollpos > currentScrollPos) {
-        document.getElementById("navbar").style.visibility = "visible";
-      } else {
-        document.getElementById("navbar").style.visibility = "hidden";
-      }
-      prevScrollpos = currentScrollPos;
+        if (Date.now - prevScrollposTime > 500) {
+            var currentScrollPos = window.pageYOffset;
+            prevScrollposTime = Date.now();
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("navbar").style.visibility = "visible";
+            } else {
+                document.getElementById("navbar").style.visibility = "hidden";
+            }
+            prevScrollpos = currentScrollPos;
+        }
     } 
 </script>
