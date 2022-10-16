@@ -4,7 +4,7 @@
 {{ partial "head.html" . }}
 
 <body class="font-sans bg-gray-500 dark:bg-black dark:text-gray-100">
-  {{/*  {{ partial "header.html" . }}  */}}
+  {{/*  {{ partial "header.html" . }} */}}
   <div class="w-full fixed m-auto flex flex-col h-screen items-center justify-end z-[999] pointer-events-none">
     {{ partial "navigation.html" . }}
   </div>
@@ -14,18 +14,20 @@
   <div id="content-main-hugo" class="flex flex-col items-center">
     {{- block "main" . -}}{{- end }}
     {{- partial "footer.html" . -}}
-    {{/*  START - for spacing...  */}}
-    
-    {{/*  END - for spacing...  */}}
-    </div>
-  {{ partial "navigation.html" . }}
+
+  </div>
+  {{/*  START - for spacing...  */}}
+  <div class="w-full m-auto flex flex-col items-center justify-end z-[0] pointer-events-none opacity-0">
+    {{ partial "navigation.html" . }}
+  </div>
+  {{/*  END - for spacing...  */}}
   <script src="/js/twitterMeta.js" charset="utf-8" defer></script>
-    <script src="/js/lazyload.min.js" charset="utf-8"></script>
-    <script>
-      var lazyLoadInstance = new LazyLoad({
-        threshold: 150,
-      })
-    </script>
-  </body>
+  <script src="/js/lazyload.min.js" charset="utf-8"></script>
+  <script>
+    var lazyLoadInstance = new LazyLoad({
+      threshold: 150,
+    })
+  </script>
+</body>
 
 </html>
