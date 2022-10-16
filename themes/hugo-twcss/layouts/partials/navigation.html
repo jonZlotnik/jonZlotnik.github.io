@@ -7,7 +7,7 @@
     {{ $isMenuCurrent := $currentPage.IsMenuCurrent "main" . }}
         <a href="{{.URL}}#title">
             {{- with .Page -}}
-            <button class="mx-2 w-24 h-10 rounded-full {{ if $isMenuCurrent }}text-gray-800 bg-{{.Params.twColor}}{{ end }} hover:text-gray-800 hover:bg-{{.Params.twColor}}">
+            <button class="mx-2 w-24 h-10 rounded-full {{ if $isMenuCurrent }}text-gray-800 bg-gray-200{{ end }} hover:text-gray-800 hover:bg-gray-200">
                 {{ .Title }}
             </button>
             {{- end -}}
