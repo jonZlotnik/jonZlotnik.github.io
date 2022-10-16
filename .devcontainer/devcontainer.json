@@ -1,5 +1,5 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.209.6/containers/hugo
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/hugo
 {
 	"name": "Hugo (Community)",
 	"build": {
@@ -14,41 +14,41 @@
 			// Rebuild the container if it already exists to update.
 			"VERSION": "latest",
 			// Update NODE_VERSION to pick the Node.js version: 12, 14
-			"NODE_VERSION": "14",
+			"NODE_VERSION": "14"
 		}
 	},
 
-	// Set *default* container specific settings.json values on container create.
-	"settings": {
-		"html.format.templating": true,
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": { 
+				"html.format.templating": true
+			},
+			
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"bungcip.better-toml",
+				"davidanson.vscode-markdownlint",
+				"bradlc.vscode-tailwindcss",
+				"miqh.core-theme",
+				"golang.go",
+				"budparr.language-hugo-vscode",
+				"eliostruyf.vscode-hugo-themer",
+				"fivethree.vscode-hugo-snippets"
+			],
+		}
 	},
-	
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		"bungcip.better-toml",
-		"davidanson.vscode-markdownlint",
-		"bradlc.vscode-tailwindcss",
-		"miqh.core-theme",
-		"golang.go",
-		"budparr.language-hugo-vscode",
-		"eliostruyf.vscode-hugo-themer",
-		"fivethree.vscode-hugo-snippets"
-	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
 		1313
 	],
-	"features": {
-		"go": "latest",
-	// 	"git": "latest",
-	// 	"homebrew": "latest",
-	// 	"golang": "latest"
-	}
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "uname -a",
 
-	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	// "remoteUser": "node"
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "node"
 }
