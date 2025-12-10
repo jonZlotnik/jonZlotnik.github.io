@@ -6,7 +6,7 @@
     <title>Horizontal Scrolling Text Component Mockup</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -30,19 +30,113 @@
         }
 
         .demo-container {
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
-            padding: 2rem;
+            padding: 0;
+            overflow: hidden;
         }
 
-        /* Theme Section */
-        .theme-section {
-            padding: 3rem 0;
-            min-height: 100vh;
+        /* Hero Title - Mobile Default */
+        .hero-title {
+            font-size: 90pt;
+            font-weight: 300;
+            text-align: center;
+            margin: 0 0 2rem 0;
+            line-height: 1.2;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            gap: 0;
+            flex-shrink: 0;
+        }
+
+        .hero-title .name-part {
+            display: inline-block;
+        }
+
+        body.dark-theme .hero-title {
+            font-weight: 700;
+        }
+
+        body.light-theme .hero-title {
+            color: #000000;
+        }
+
+        body.dark-theme .hero-title {
+            color: #FFFFFF;
+        }
+
+        /* Connect Button - Mobile Default */
+        .connect-button {
+            background: transparent;
+            border: 2px solid;
+            border-radius: 0;
+            width: 180px;
+            height: 50px;
+            font-family: 'Lato', sans-serif;
+            font-size: 14pt;
+            font-weight: 400;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            margin: 0 auto;
+            display: block;
+            flex-shrink: 0;
+        }
+
+        body.light-theme .connect-button {
+            border-color: #000000;
+            color: #000000;
+        }
+
+        body.dark-theme .connect-button {
+            border-color: #FFFFFF;
+            color: #FFFFFF;
+        }
+
+        .connect-button:hover {
+            opacity: 0.7;
+        }
+
+        .connect-button:active {
+            transform: scale(0.98);
+        }
+
+        /* Header Container - Mobile Default */
+        .header-container {
+            max-height: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        /* Theme Section - Mobile Default */
+        .theme-section {
+            min-height: 100vh;
+            max-height: 900px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 1rem;
+            box-sizing: border-box;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        @media (min-height: 900px) {
+            .theme-section {
+                height: 900px;
+                min-height: 900px;
+            }
+            
+            .demo-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
         }
 
         .section-title {
@@ -60,22 +154,34 @@
             color: #FFFFFF;
         }
 
+        /* Scrolling Text Wrapper - Mobile Default */
+        .scrolling-text-wrapper-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 90vw;
+            margin: 2rem auto 0;
+        }
+
         /* Scrolling Text Container */
         .scrolling-text-container {
             position: relative;
             width: 100%;
             overflow: hidden;
             padding: 0.5rem 0;
+            box-sizing: border-box;
         }
 
-        /* Gradient Fade Effects */
+        /* Gradient Fade Effects - Mobile Default */
         .scrolling-text-container::before,
         .scrolling-text-container::after {
             content: '';
             position: absolute;
             top: 0;
             bottom: 0;
-            width: 200px;
+            width: 100px;
             z-index: 2;
             pointer-events: none;
         }
@@ -100,12 +206,14 @@
             background: linear-gradient(to left, rgba(28, 28, 28, 1), rgba(28, 28, 28, 0));
         }
 
-        /* Scrolling Text Wrapper */
+        /* Scrolling Text Wrapper - Mobile Default */
         .scrolling-text-wrapper {
             display: flex;
-            gap: 3rem;
+            gap: 2rem;
             width: fit-content;
             animation: scroll linear infinite;
+            padding: 0 2rem;
+            box-sizing: border-box;
         }
 
         .scrolling-text-wrapper:hover {
@@ -121,9 +229,9 @@
             animation-duration: 60s;
         }
 
-        /* Scrolling Text Item */
+        /* Scrolling Text Item - Mobile Default */
         .scrolling-text-item {
-            font-size: 16pt;
+            font-size: 14pt;
             font-weight: 400;
             white-space: nowrap;
             flex-shrink: 0;
@@ -168,19 +276,39 @@
             content: attr(data-content);
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
+        /* Desktop adjustments */
+        @media (min-width: 769px) {
+            .hero-title {
+                flex-direction: row;
+                gap: 0.3em;
+                margin-bottom: 4rem;
+            }
+
+            .theme-section {
+                padding: 2rem;
+            }
+
+            .scrolling-text-wrapper-container {
+                max-width: 1200px;
+            }
+
             .scrolling-text-container::before,
             .scrolling-text-container::after {
-                width: 100px;
+                width: 200px;
             }
 
             .scrolling-text-item {
-                font-size: 14pt;
+                font-size: 16pt;
             }
 
             .scrolling-text-wrapper {
-                gap: 2rem;
+                gap: 3rem;
+            }
+
+            .connect-button {
+                width: 220px;
+                height: 40px;
+                font-size: 14pt;
             }
         }
 
@@ -196,10 +324,42 @@
             font-size: 12px;
             z-index: 1000;
             min-width: 250px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .controls.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+        }
+
+        .controls-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            z-index: 1001;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .controls-toggle:hover {
+            background: rgba(0, 0, 0, 1);
+        }
+
+        .controls-toggle.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
         }
 
         .controls h3 {
-            margin: 0 0 1rem 0;
+            margin: 0;
             font-size: 14px;
         }
 
@@ -256,17 +416,31 @@
     <div class="demo-container">
         <!-- Theme Section -->
         <section class="theme-section">
-            <div class="scrolling-text-container">
-                <div class="scrolling-text-wrapper top-line"></div>
+            <div class="header-container">
+                <h1 class="hero-title">
+                    <span class="name-part">Jon</span>
+                    <span class="name-part">Zlotnik</span>
+                </h1>
+                <div class="scrolling-text-wrapper-container">
+                    <div class="scrolling-text-container">
+                        <div class="scrolling-text-wrapper top-line"></div>
+                    </div>
+                    <div class="scrolling-text-container">
+                        <div class="scrolling-text-wrapper bottom-line"></div>
+                    </div>
+                </div>
             </div>
-            <div class="scrolling-text-container">
-                <div class="scrolling-text-wrapper bottom-line"></div>
-            </div>
+            <button class="connect-button">Connect</button>
         </section>
     </div>
 
-    <div class="controls">
-        <h3>Controls</h3>
+    <button class="controls-toggle" id="controls-toggle-btn" onclick="toggleControls()">Show Controls</button>
+    
+    <div class="controls hidden" id="controls-panel">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <h3 style="margin: 0;">Controls</h3>
+            <button onclick="toggleControls()" style="background: rgba(255, 255, 255, 0.2); color: white; border: none; padding: 0.25rem 0.5rem; border-radius: 4px; cursor: pointer; font-size: 11px;">Hide</button>
+        </div>
         
         <div class="control-group">
             <button onclick="toggleTheme()" id="theme-toggle">Switch to Dark</button>
@@ -412,6 +586,19 @@
                 body.classList.remove('dark-theme');
                 body.classList.add('light-theme');
                 themeToggle.textContent = 'Switch to Dark';
+            }
+        }
+
+        function toggleControls() {
+            const controlsPanel = document.getElementById('controls-panel');
+            const toggleBtn = document.getElementById('controls-toggle-btn');
+            
+            if (controlsPanel.classList.contains('hidden')) {
+                controlsPanel.classList.remove('hidden');
+                toggleBtn.classList.add('hidden');
+            } else {
+                controlsPanel.classList.add('hidden');
+                toggleBtn.classList.remove('hidden');
             }
         }
 
