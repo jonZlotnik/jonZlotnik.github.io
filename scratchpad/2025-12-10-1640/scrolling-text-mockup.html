@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Scrolling Text Component Mockup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        body.light-theme {
+            background: #FFFFFF;
+        }
+
+        body.dark-theme {
+            background: #1C1C1C;
+        }
+
+        .demo-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+        }
+
+        /* Theme Section */
+        .theme-section {
+            padding: 3rem 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        body.light-theme .section-title {
+            color: #000000;
+        }
+
+        body.dark-theme .section-title {
+            color: #FFFFFF;
+        }
+
+        /* Scrolling Text Container */
+        .scrolling-text-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 0.5rem 0;
+        }
+
+        /* Gradient Fade Effects */
+        .scrolling-text-container::before,
+        .scrolling-text-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 200px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        body.light-theme .scrolling-text-container::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+        }
+
+        body.light-theme .scrolling-text-container::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+        }
+
+        body.dark-theme .scrolling-text-container::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(28, 28, 28, 1), rgba(28, 28, 28, 0));
+        }
+
+        body.dark-theme .scrolling-text-container::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(28, 28, 28, 1), rgba(28, 28, 28, 0));
+        }
+
+        /* Scrolling Text Wrapper */
+        .scrolling-text-wrapper {
+            display: flex;
+            gap: 3rem;
+            width: fit-content;
+            animation: scroll linear infinite;
+        }
+
+        .scrolling-text-wrapper:hover {
+            animation-play-state: paused;
+        }
+
+        /* Default speeds - will be overridden by inline styles */
+        .scrolling-text-wrapper.top-line {
+            animation-duration: 60s;
+        }
+
+        .scrolling-text-wrapper.bottom-line {
+            animation-duration: 60s;
+        }
+
+        /* Scrolling Text Item */
+        .scrolling-text-item {
+            font-size: 16pt;
+            font-weight: 400;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        body.light-theme .scrolling-text-item {
+            color: #000000;
+        }
+
+        body.dark-theme .scrolling-text-item {
+            color: #FFFFFF;
+        }
+
+        /* Separator */
+        .scrolling-text-separator {
+            font-size: 16pt;
+            opacity: 0.5;
+        }
+
+        /* Animation */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Reverse animation */
+        @keyframes scroll-reverse {
+            0% {
+                transform: translateX(-50%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Duplicate content for seamless loop */
+        .scrolling-text-wrapper::after {
+            content: attr(data-content);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .scrolling-text-container::before,
+            .scrolling-text-container::after {
+                width: 100px;
+            }
+
+            .scrolling-text-item {
+                font-size: 14pt;
+            }
+
+            .scrolling-text-wrapper {
+                gap: 2rem;
+            }
+        }
+
+        /* Control Panel */
+        .controls {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-size: 12px;
+            z-index: 1000;
+            min-width: 250px;
+        }
+
+        .controls h3 {
+            margin: 0 0 1rem 0;
+            font-size: 14px;
+        }
+
+        .control-group {
+            margin-bottom: 1rem;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            margin-bottom: 0.25rem;
+        }
+
+        .control-group input[type="number"] {
+            width: 80px;
+            padding: 0.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .control-group .value-display {
+            display: inline-block;
+            margin-left: 0.5rem;
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+        .controls button {
+            background: white;
+            color: black;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem 0.25rem 0.25rem 0;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .controls button:hover {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <!-- Theme Section -->
+        <section class="theme-section">
+            <div class="scrolling-text-container">
+                <div class="scrolling-text-wrapper top-line"></div>
+            </div>
+            <div class="scrolling-text-container">
+                <div class="scrolling-text-wrapper bottom-line"></div>
+            </div>
+        </section>
+    </div>
+
+    <div class="controls">
+        <h3>Controls</h3>
+        
+        <div class="control-group">
+            <button onclick="toggleTheme()" id="theme-toggle">Switch to Dark</button>
+        </div>
+
+        <div class="control-group">
+            <label for="top-speed">Top Line Speed: <span class="value-display" id="top-speed-value">5</span></label>
+            <input type="range" id="top-speed" min="-100" max="100" value="5" step="1" oninput="updateTopSpeed(this.value)">
+            <input type="number" id="top-speed-input" min="-100" max="100" value="5" step="1" oninput="updateTopSpeed(this.value)">
+        </div>
+
+        <div class="control-group">
+            <label for="bottom-speed">Bottom Line Speed: <span class="value-display" id="bottom-speed-value">5</span></label>
+            <input type="range" id="bottom-speed" min="-100" max="100" value="5" step="1" oninput="updateBottomSpeed(this.value)">
+            <input type="number" id="bottom-speed-input" min="-100" max="100" value="5" step="1" oninput="updateBottomSpeed(this.value)">
+        </div>
+
+        <button onclick="toggleAnimation()">Pause/Play All</button>
+    </div>
+
+    <script>
+        // Speed state
+        let topSpeed = 5;
+        let bottomSpeed = 5;
+
+        // Convert speed value to animation duration and direction
+        function speedToAnimation(speed) {
+            if (speed === 0) {
+                return {
+                    duration: 999999,
+                    reverse: false
+                };
+            }
+            const absSpeed = Math.abs(speed);
+            // Convert speed (1-100) to duration (1s to 100s)
+            // Higher speed = faster = shorter duration
+            // Formula: duration = 100 / speed (scaled appropriately)
+            const duration = Math.max(1, (100 / absSpeed) * 3);
+            return {
+                duration: duration,
+                reverse: speed < 0
+            };
+        }
+
+        function updateTopSpeed(value) {
+            topSpeed = parseInt(value) || 0;
+            document.getElementById('top-speed').value = topSpeed;
+            document.getElementById('top-speed-input').value = topSpeed;
+            document.getElementById('top-speed-value').textContent = topSpeed;
+            
+            const anim = speedToAnimation(topSpeed);
+            // Update all top-line wrappers including clones
+            const topWrappers = document.querySelectorAll('.top-line');
+            topWrappers.forEach(wrapper => {
+                wrapper.style.animationDuration = `${anim.duration}s`;
+                wrapper.style.animationName = anim.reverse ? 'scroll-reverse' : 'scroll';
+            });
+        }
+
+        function updateBottomSpeed(value) {
+            bottomSpeed = parseInt(value) || 0;
+            document.getElementById('bottom-speed').value = bottomSpeed;
+            document.getElementById('bottom-speed-input').value = bottomSpeed;
+            document.getElementById('bottom-speed-value').textContent = bottomSpeed;
+            
+            const anim = speedToAnimation(bottomSpeed);
+            // Update all bottom-line wrappers including clones
+            const bottomWrappers = document.querySelectorAll('.bottom-line');
+            bottomWrappers.forEach(wrapper => {
+                wrapper.style.animationDuration = `${anim.duration}s`;
+                wrapper.style.animationName = anim.reverse ? 'scroll-reverse' : 'scroll';
+            });
+        }
+
+        // Word lists - defined once
+        const topLineWords = ['blockchain', 'systems', 'network', 'rust', 'golang', 'rust'];
+        const bottomLineWords = ['hacker', 'researcher', 'engineer', 'architect', 'analyst', 'cryptographer'];
+
+        // Populate scrolling text with words
+        function populateScrollingText() {
+            // Populate top lines
+            const topWrappers = document.querySelectorAll('.top-line');
+            topWrappers.forEach(wrapper => {
+                // Add words twice for seamless loop
+                [...topLineWords, ...topLineWords].forEach(word => {
+                    const span = document.createElement('span');
+                    span.className = 'scrolling-text-item';
+                    span.textContent = word;
+                    wrapper.appendChild(span);
+                });
+            });
+
+            // Populate bottom lines
+            const bottomWrappers = document.querySelectorAll('.bottom-line');
+            bottomWrappers.forEach(wrapper => {
+                // Add words twice for seamless loop
+                [...bottomLineWords, ...bottomLineWords].forEach(word => {
+                    const span = document.createElement('span');
+                    span.className = 'scrolling-text-item';
+                    span.textContent = word;
+                    wrapper.appendChild(span);
+                });
+            });
+        }
+
+        // Duplicate content for seamless infinite scroll
+        function setupInfiniteScroll() {
+            const wrappers = document.querySelectorAll('.scrolling-text-wrapper:not([aria-hidden])');
+            wrappers.forEach(wrapper => {
+                // Check if already duplicated
+                if (wrapper.querySelector('[data-duplicate]')) return;
+                
+                // Clone all children
+                const children = Array.from(wrapper.children);
+                children.forEach(child => {
+                    const clone = child.cloneNode(true);
+                    clone.setAttribute('data-duplicate', 'true');
+                    wrapper.appendChild(clone);
+                });
+            });
+        }
+
+        function toggleAnimation() {
+            const wrappers = document.querySelectorAll('.scrolling-text-wrapper');
+            wrappers.forEach(wrapper => {
+                if (wrapper.style.animationPlayState === 'paused') {
+                    wrapper.style.animationPlayState = 'running';
+                } else {
+                    wrapper.style.animationPlayState = 'paused';
+                }
+            });
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.getElementById('theme-toggle');
+            
+            if (body.classList.contains('light-theme')) {
+                body.classList.remove('light-theme');
+                body.classList.add('dark-theme');
+                themeToggle.textContent = 'Switch to Light';
+            } else {
+                body.classList.remove('dark-theme');
+                body.classList.add('light-theme');
+                themeToggle.textContent = 'Switch to Dark';
+            }
+        }
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            // Set default theme to light
+            document.body.classList.add('light-theme');
+            populateScrollingText();
+            setupInfiniteScroll();
+            updateTopSpeed(topSpeed);
+            updateBottomSpeed(bottomSpeed);
+        });
+    </script>
+</body>
+</html>
+
