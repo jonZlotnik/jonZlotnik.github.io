@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jon Zlotnik — Software Engineer & Applied Cryptographer</title>
+  <meta name="description"
+    content="Personal website of Jon Zlotnik. Software Engineer, Applied Cryptographer, and Information Security Expert.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Skip Link -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Theme Toggle -->
+  <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
+  <label for="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark theme">
+    <svg class="theme-icon theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="4" />
+      <path
+        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+    </svg>
+    <svg class="theme-icon theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+    </svg>
+  </label>
+
+  <!-- Hero Section -->
+  <header class="hero" id="hero">
+    <div class="hero-content">
+      <h1 class="hero-name">Jon Zlotnik</h1>
+      <p class="hero-subtitle">Software Engineer & Applied Cryptographer</p>
+      <p class="hero-tertiary">Information Security Expert</p>
+
+      <nav class="social-links" aria-label="Social links">
+        <a href="mailto:jon@example.com" class="social-btn" aria-label="Email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 2L11 13" />
+            <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+          </svg>
+        </a>
+        <a href="https://t.me/jonzlotnik" class="social-btn" aria-label="Telegram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+          </svg>
+        </a>
+        <a href="https://github.com/jonZlotnik" class="social-btn" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+          </svg>
+        </a>
+        <a href="https://linkedin.com/in/jonzlotnik" class="social-btn" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+        </a>
+      </nav>
+
+      <a href="#main" class="cta-btn">
+        See My Projects
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19" />
+          <polyline points="19 12 12 19 5 12" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-line"></div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main" class="main">
+    <div class="container">
+      <div class="content-wrapper">
+        <!-- Filter Radio Buttons (hidden) -->
+        <input type="radio" id="filter-all" name="filter" class="filter-radio" checked>
+        <input type="radio" id="filter-project" name="filter" class="filter-radio">
+        <input type="radio" id="filter-post" name="filter" class="filter-radio">
+        <input type="radio" id="filter-photo" name="filter" class="filter-radio">
+
+        <!-- Tag Filter Radio Buttons (hidden) -->
+        <input type="radio" id="tag-all" name="tag-filter" class="filter-radio" checked>
+        <input type="radio" id="tag-macro" name="tag-filter" class="filter-radio">
+        <input type="radio" id="tag-nature" name="tag-filter" class="filter-radio">
+        <input type="radio" id="tag-photography" name="tag-filter" class="filter-radio">
+        <input type="radio" id="tag-cryptography" name="tag-filter" class="filter-radio">
+        <input type="radio" id="tag-security" name="tag-filter" class="filter-radio">
+        <input type="radio" id="tag-go" name="tag-filter" class="filter-radio">
+        <input type="radio" id="tag-privacy" name="tag-filter" class="filter-radio">
+        <input type="radio" id="tag-identity" name="tag-filter" class="filter-radio">
+        <input type="radio" id="tag-technology" name="tag-filter" class="filter-radio">
+        <input type="radio" id="tag-hardware" name="tag-filter" class="filter-radio">
+        <input type="radio" id="tag-kubernetes" name="tag-filter" class="filter-radio">
+        <input type="radio" id="tag-homelab" name="tag-filter" class="filter-radio">
+        <input type="radio" id="tag-raspberry-pi" name="tag-filter" class="filter-radio">
+        <input type="radio" id="tag-linux" name="tag-filter" class="filter-radio">
+        <input type="radio" id="tag-nixos" name="tag-filter" class="filter-radio">
+        <input type="radio" id="tag-devops" name="tag-filter" class="filter-radio">
+
+        <!-- Tag Filter Toggle -->
+        <input type="checkbox" id="tag-filter-toggle" class="filter-radio">
+
+        <!-- Filter Bar -->
+        <nav class="filter-bar" aria-label="Content filters">
+          <div class="filter-group">
+            <label for="filter-all" class="filter-pill">All</label>
+            <label for="filter-project" class="filter-pill">Projects</label>
+            <label for="filter-post" class="filter-pill">Posts</label>
+            <label for="filter-photo" class="filter-pill">Photos</label>
+            <label for="tag-filter-toggle" class="tag-filter-toggle">
+              <span>Filter by tag</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </label>
+          </div>
+
+          <!-- Tag Filter Section -->
+          <div class="tag-filter-section">
+            <div class="tag-filter-list">
+              <label for="tag-all" class="tag-filter-pill">All Tags</label>
+              <label for="tag-macro" class="tag-filter-pill">macro</label>
+              <label for="tag-nature" class="tag-filter-pill">nature</label>
+              <label for="tag-photography" class="tag-filter-pill">photography</label>
+              <label for="tag-cryptography" class="tag-filter-pill">cryptography</label>
+              <label for="tag-security" class="tag-filter-pill">security</label>
+              <label for="tag-go" class="tag-filter-pill">go</label>
+              <label for="tag-privacy" class="tag-filter-pill">privacy</label>
+              <label for="tag-identity" class="tag-filter-pill">identity</label>
+              <label for="tag-technology" class="tag-filter-pill">technology</label>
+              <label for="tag-hardware" class="tag-filter-pill">hardware</label>
+              <label for="tag-kubernetes" class="tag-filter-pill">kubernetes</label>
+              <label for="tag-homelab" class="tag-filter-pill">homelab</label>
+              <label for="tag-raspberry-pi" class="tag-filter-pill">raspberry-pi</label>
+              <label for="tag-linux" class="tag-filter-pill">linux</label>
+              <label for="tag-nixos" class="tag-filter-pill">nixos</label>
+              <label for="tag-devops" class="tag-filter-pill">devops</label>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Feed -->
+        <div class="feed" id="feed">
+
+          <!-- Photo Card -->
+          <article class="card card-photo" data-type="photo">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800&q=80"
+                alt="Macro shot of a bee on white flowers" loading="lazy">
+            </div>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-category">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                    <circle cx="12" cy="13" r="4" />
+                  </svg>
+                  Photography
+                </span>
+                <span class="card-date">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  December 2025
+                </span>
+              </div>
+              <h2 class="card-title">Bees on Île-Bizard</h2>
+              <p class="card-description">Captured with my 55mm Nikkor Micro f/2.8 during a walk along the Parc
+                Île-Bizard trails. A field of white buzzing flowers made for perfect macro photography practice.</p>
+              <div class="card-tags">
+                <span class="tag" data-tag="macro">macro</span>
+                <span class="tag" data-tag="nature">nature</span>
+                <span class="tag" data-tag="photography">photography</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Card -->
+          <article class="card card-text" data-type="project">
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-category">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polyline points="16 18 22 12 16 6" />
+                    <polyline points="8 6 2 12 8 18" />
+                  </svg>
+                  Project
+                </span>
+                <span class="card-date">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  November 2025
+                </span>
+              </div>
+              <h2 class="card-title">Encrypted Messaging Protocol</h2>
+              <p class="card-description">Built a lightweight end-to-end encrypted messaging protocol using modern
+                cryptographic primitives. Implements forward secrecy and deniable authentication.</p>
+              <div class="card-tags">
+                <span class="tag" data-tag="cryptography">cryptography</span>
+                <span class="tag" data-tag="security">security</span>
+                <span class="tag" data-tag="go">go</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Blog Post Card -->
+          <article class="card card-text" data-type="post">
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-category">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10 9 9 9 8 9" />
+                  </svg>
+                  Post
+                </span>
+                <span class="card-date">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  October 2025
+                </span>
+              </div>
+              <h2 class="card-title">Thoughts on Zero-Knowledge Proofs in Identity Systems</h2>
+              <p class="card-description">Exploring how ZK-SNARKs and ZK-STARKs could revolutionize digital identity
+                verification while preserving user privacy. A deep dive into the cryptographic foundations and practical
+                applications.</p>
+              <div class="card-tags">
+                <span class="tag" data-tag="cryptography">cryptography</span>
+                <span class="tag" data-tag="privacy">privacy</span>
+                <span class="tag" data-tag="identity">identity</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Another Photo Card -->
+          <article class="card card-photo" data-type="photo">
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80"
+                alt="Circuit board macro photography" loading="lazy">
+            </div>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-category">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                    <circle cx="12" cy="13" r="4" />
+                  </svg>
+                  Photography
+                </span>
+                <span class="card-date">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  September 2025
+                </span>
+              </div>
+              <h2 class="card-title">Silicon Dreams</h2>
+              <p class="card-description">Macro exploration of vintage computer hardware. There's a certain beauty in
+                the geometric precision of early microprocessors and the organic-looking traces of hand-designed PCBs.
+              </p>
+              <div class="card-tags">
+                <span class="tag" data-tag="macro">macro</span>
+                <span class="tag" data-tag="technology">technology</span>
+                <span class="tag" data-tag="hardware">hardware</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Card -->
+          <article class="card card-text" data-type="project">
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-category">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polyline points="16 18 22 12 16 6" />
+                    <polyline points="8 6 2 12 8 18" />
+                  </svg>
+                  Project
+                </span>
+                <span class="card-date">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  August 2025
+                </span>
+              </div>
+              <h2 class="card-title">Home Lab Kubernetes Cluster</h2>
+              <p class="card-description">Set up a bare-metal Kubernetes cluster using three Raspberry Pi 5s. Running
+                Traefik for ingress, Longhorn for distributed storage, and ArgoCD for GitOps deployments.</p>
+              <div class="card-tags">
+                <span class="tag" data-tag="kubernetes">kubernetes</span>
+                <span class="tag" data-tag="homelab">homelab</span>
+                <span class="tag" data-tag="raspberry-pi">raspberry-pi</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Blog Post Card -->
+          <article class="card card-text" data-type="post">
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="card-category">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10 9 9 9 8 9" />
+                  </svg>
+                  Post
+                </span>
+                <span class="card-date">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  July 2025
+                </span>
+              </div>
+              <h2 class="card-title">Why I Switched to NixOS</h2>
+              <p class="card-description">After years of distro-hopping, I finally found my home. Declarative system
+                configuration, reproducible builds, and the ability to rollback any change has transformed how I think
+                about system administration.</p>
+              <div class="card-tags">
+                <span class="tag" data-tag="linux">linux</span>
+                <span class="tag" data-tag="nixos">nixos</span>
+                <span class="tag" data-tag="devops">devops</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">© 2025 Jon Zlotnik. Built with curiosity.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
