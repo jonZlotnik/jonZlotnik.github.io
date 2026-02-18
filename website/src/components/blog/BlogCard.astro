@@ -1,0 +1,117 @@
+---
+import { Image } from "astro:assets";
+import ShareButtons from "../ShareButtons.astro";
+
+export interface Blog {
+  id: string;
+  title: string;
+  href?: string;
+  author?: string;
+  pubDate: Date | string;
+  description?: string;
+  image?: string;
+  tags?: string[];
+  icon?: string;
+}
+
+interface Props {
+  blog: Blog;
+}
+
+const origin = Astro.url.origin;
+
+const { blog } = Astro.props;
+
+const url = `${origin}/blogs/${blog.id}`;
+
+function getCategoryColor(blogId: string) {
+  const gradients = [
+    "from-neutral-200/30 to-neutral-300/40",
+    "from-neutral-100 to-neutral-200",
+    "from-neutral-200 to-neutral-300",
+    "from-neutral-300/50 to-neutral-400/60",
+    "from-neutral-100/80 to-neutral-200",
+    "from-neutral-200/50 to-neutral-300/60",
+    "from-neutral-300 to-neutral-400",
+    "from-neutral-100/90 to-neutral-200/90",
+    "from-neutral-200/70 to-neutral-300/70",
+    "from-neutral-300/40 to-neutral-400/50",
+  ];
+  const sum = blogId
+    .split("")
+    .reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const index = sum % gradients.length;
+  return gradients[index];
+}
+
+const formatDate = (date: Date | string) => {
+  if (typeof date === "string") return date;
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  });
+};
+---
+
+<div
+  class="relative overflow-hidden bg-neutral-900/50 border border-neutral-700 pt-0 gap-0 w-full flex flex-col cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:border-neutral-500/50 hover:shadow-lg hover:shadow-black/10 rounded-lg"
+>
+  <a href={`/blogs/${blog.id}`} class="flex flex-col flex-grow">
+    <header class="p-0 gap-0">
+      <div class="aspect-video w-full bg-teahouse-light relative">
+        {
+          blog.image ? (
+            <Image
+              src={blog.image}
+              alt={blog.title}
+              width={800}
+              height={450}
+              class="w-full h-full object-cover"
+            />
+          ) : (
+            <div class="flex h-full items-center justify-center">
+              <div
+                class={`h-full w-full bg-gradient-to-br ${getCategoryColor(blog.id)}`}
+              />
+            </div>
+          )
+        }
+      </div>
+    </header>
+    <div class="p-4">
+      <h3
+        class="mt-2 line-clamp-2 font-noto-serif text-xl text-neutral-300 font-bold"
+      >
+        {blog.title}
+      </h3>
+      <p class="mt-2 line-clamp-3 text-sm text-neutral-300/70">
+        {blog.description}
+      </p>
+    </div>
+    <footer class="p-4 pt-0">
+      <div class="flex items-center justify-between">
+        <div class="text-sm text-neutral-300/60">
+          {formatDate(blog.pubDate)}
+        </div>
+        <div class="text-sm text-neutral-300/60">{blog.author}</div>
+      </div>
+    </footer>
+    <div class="flex-grow"></div>
+  </a>
+  <div class="flex items-center justify-between mt-2 p-4">
+    <a
+      href={`/blogs/${blog.id}`}
+      class="text-sm font-medium text-primary"
+    >
+      Read More
+    </a>
+    <div class="flex justify-end items-center gap-2">
+      <ShareButtons
+        url={url}
+        title={blog.title}
+        description={blog.description}
+      />
+    </div>
+  </div>
+</div>

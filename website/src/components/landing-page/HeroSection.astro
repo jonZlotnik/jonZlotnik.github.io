@@ -1,0 +1,150 @@
+---
+import { DOODLE_EMOJIS } from "@/consts";
+import type { Doodle } from "@/schemas/doodle";
+import ScrollingTags from "./ScrollingTags.astro";
+
+export interface Props {
+  uniqueTags: string[];
+  doodle?: Doodle & { href: string };
+}
+
+const { uniqueTags, doodle } = Astro.props as Props;
+const doodleEmoji =
+  DOODLE_EMOJIS[Math.floor(Math.random() * DOODLE_EMOJIS.length)];
+---
+
+<section
+  class="relative h-[calc(100vh-4rem)] overflow-hidden bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950"
+>
+  <div
+    class="absolute inset-0 bg-[linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] animate-pulse"
+  >
+  </div>
+
+  <ScrollingTags uniqueTags={uniqueTags} />
+
+  <div
+    class="absolute top-1/2 left-1/2 w-96 h-96 -translate-x-1/2 -translate-y-1/2 bg-white/5 rounded-full blur-3xl"
+  >
+  </div>
+
+  <div
+    class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full flex items-center pointer-events-none"
+  >
+    <div class="text-center w-full">
+      <div
+        class="relative flex flex-col justify-center items-center pointer-events-auto"
+        id="mona-text"
+      >
+        <div id="hero-content">
+          {doodle ? (
+            <>
+              <h1
+                class="mb-4 text-5xl font-bold tracking-tight text-white sm:text-7xl"
+              >
+                <span
+                  class="relative inline-block text-primary text-glow animate-pulse"
+                >
+                  {doodleEmoji}
+                </span>&nbsp;{doodle.title}
+              </h1>
+
+              <p class="mx-auto max-w-3xl text-xl text-white leading-relaxed">
+                {doodle.description}
+              </p>
+            </>
+          ) : (
+            <>
+              <h1
+                class="mb-4 text-5xl font-bold tracking-tight text-white sm:text-7xl"
+              >
+                <span
+                  class="relative inline-block text-primary text-glow animate-pulse"
+                >
+                  Jon
+                </span>{" "} Zlotnik
+              </h1>
+
+              <p class="mx-auto max-w-3xl text-xl text-white leading-relaxed">
+                Live to grok.
+              </p>
+            </>
+          )}
+        </div>
+
+        {doodle && (
+          <a
+            href={doodle.href}
+            class="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors opacity-0 translate-y-2 pointer-events-none transform"
+            data-hero-button
+          >
+            Know More →
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { createTimeline, stagger, text } from "animejs";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const heroContent = document.getElementById("hero-content");
+    const heroButton = document.querySelector("[data-hero-button]") as
+      | HTMLAnchorElement
+      | null;
+
+    const startTags = () => {
+      document.dispatchEvent(new Event("start-tags"));
+    };
+
+    const revealButton = () => {
+      if (!heroButton) {
+        startTags();
+        return;
+      }
+
+      const buttonTimeline = createTimeline({
+      });
+
+      buttonTimeline.add(heroButton, {});
+
+      buttonTimeline.init().then(() => {
+        heroButton.classList.remove(
+          "opacity-0",
+          "translate-y-2",
+          "pointer-events-none",
+        );
+        heroButton.classList.add("pointer-events-auto");
+        startTags();
+      });
+    };
+
+    if (heroContent) {
+      const { chars } = text.split(heroContent, {
+        words: false,
+        chars: true,
+      });
+
+      const headlineTimeline = createTimeline({
+        loop: false,
+        defaults: { ease: "inOut(3)", duration: 1500 },
+      });
+
+      headlineTimeline
+        .add(
+          chars,
+          {
+            y: [($el) => (+$el.dataset.line % 2 ? "100%" : "-200%"), "0%"],
+            opacity: [0, 1],
+          },
+          stagger(10, { from: "random" })
+        )
+        .init()
+        .then(revealButton);
+    } else {
+      revealButton();
+    }
+  });
+</script>
