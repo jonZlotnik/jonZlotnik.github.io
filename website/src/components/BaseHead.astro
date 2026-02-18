@@ -120,7 +120,24 @@ const productStructuredData =
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<script is:inline>
+  (function () {
+    function setHeroHeight() {
+      var h = (typeof window !== "undefined" && window.visualViewport && window.visualViewport.height)
+        ? window.visualViewport.height
+        : (typeof window !== "undefined" ? window.innerHeight : 100);
+      document.documentElement.style.setProperty("--hero-available-height", h + "px");
+    }
+    if (typeof document !== "undefined" && typeof window !== "undefined") {
+      setHeroHeight();
+      window.addEventListener("orientationchange", function () {
+        setTimeout(setHeroHeight, 100);
+      });
+      window.addEventListener("load", setHeroHeight);
+    }
+  })();
+</script>
 <meta name="robots" content={robots} />
 <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 <link rel="sitemap" href="/sitemap-index.xml" />

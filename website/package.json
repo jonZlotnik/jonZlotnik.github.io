@@ -13,6 +13,7 @@
   "scripts": {
     "clean": "rm -rf .astro node_modules/.cache dist public/_pagefind",
     "dev": "astro build && astro dev",
+    "dev:host": "astro build && astro dev --host",
     "prebuild": "pnpm run build:search-index",
     "build": "astro build",
     "build:analyze": "ANALYZE=true astro build",
