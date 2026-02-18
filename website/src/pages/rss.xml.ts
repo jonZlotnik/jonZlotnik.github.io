@@ -4,10 +4,18 @@ import type { APIContext } from "astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 
 export async function GET(context: APIContext) {
-  const posts = await getCollection("blogs");
-  const cards = await getCollection("cards");
-  const slides = await getCollection("slides");
-  const doodles = await getCollection("doodles");
+  const posts = (await getCollection("blogs")).filter(
+    (post) => !post.data.draft,
+  );
+  const cards = (await getCollection("cards")).filter(
+    (card) => !card.data.draft,
+  );
+  const slides = (await getCollection("slides")).filter(
+    (slide) => !slide.data.draft,
+  );
+  const doodles = (await getCollection("doodles")).filter(
+    (doodle) => !doodle.data.draft,
+  );
   const contents = [...posts, ...cards, ...slides, ...doodles];
 
   if (!context.site) {

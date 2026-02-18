@@ -13,7 +13,9 @@ import "@/styles/article.css";
 
 // add all blog posts to sitemap
 sitemap(async ({ addToSitemap }) => {
-  const blogPosts = await getCollection("blogs");
+  const blogPosts = (await getCollection("blogs")).filter(
+    (post) => !post.data.draft,
+  );
 
   addToSitemap(
     blogPosts.map((post) => ({
@@ -39,7 +41,9 @@ if (!post) {
 
 const { Content } = await render(post);
 const origin = Astro.url.origin;
-const allBlogs = await getCollection("blogs");
+const allBlogs = (await getCollection("blogs")).filter(
+  (p) => !p.data.draft && !p.id.endsWith("groq-code-cli-internal"),
+);
 const adjacentContent = getAdjacentContent(allBlogs, post.id);
 const tags = post.data.tags || [];
 const pageTitle = `${post.data.title} | ${SITE_TITLE}`;

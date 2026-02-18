@@ -5,4 +5,5 @@ export const CardMetadata = z.object({
   tags: z.array(z.string()).optional(),
   pubDate: z.coerce.date(),
   template: z.string().default("blackWhite"),
+  draft: z.boolean().default(false),
 });

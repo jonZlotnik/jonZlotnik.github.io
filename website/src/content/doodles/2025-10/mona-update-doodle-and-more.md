@@ -2,7 +2,8 @@
 title: "New Feature: Doodles Content"
 description: "MonaKit now supports Doodles content and includes several fixes and improvements."
 pubDate: 2025-10-22
-endDate: 2025-11-01
+endDate: 2024-11-01
+draft: true
 ---
 
 We support Doodles content in MonaKit, allowing users to easily create and manage Doodles on their Astro-powered sites. We design the doodle content type for any time-sensitive content, such as announcements, updates or events.

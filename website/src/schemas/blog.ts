@@ -22,10 +22,12 @@ export const PageBaseMetadata = z.object({
   description: z.string(),
   pubDate: z.coerce.date(),
   updatedDate: z.coerce.date().optional(),
+  draft: z.boolean().default(false),
 });
 
 export const BlogMetadata = PageBaseMetadata.extend({
   author: z.string().optional(),
+  image: z.string().optional(),
   tags: z.array(z.string()).default([]),
   metadata: z.array(z.string()).optional(),
 });
