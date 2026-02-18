@@ -10,7 +10,7 @@ const { references = [], tools = [] } = Astro.props;
   aria-modal="true"
 >
   <div
-    class="bg-neutral-800 rounded-lg p-6 max-w-md md:max-w-2xl w-full mx-4 max-h-[80vh] knowledge-card-modal flex flex-col border border-neutral-600"
+    class="bg-neutral-800 rounded-lg p-6 max-w-md md:max-w-2xl w-full mx-4 knowledge-card-modal modal-max-h flex flex-col border border-neutral-600"
     role="document"
   >
     <div class="flex justify-between items-center mb-4">
@@ -72,3 +72,10 @@ const { references = [], tools = [] } = Astro.props;
     });
   });
 </script>
+
+<style>
+  .modal-max-h {
+    max-height: 80vh;
+    max-height: 80svh;
+  }
+</style>

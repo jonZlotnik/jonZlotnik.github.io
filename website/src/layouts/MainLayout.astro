@@ -73,7 +73,7 @@ const {
   <body>
     <div
     class={cn(
-      "flex min-h-screen flex-col",
+      "flex flex-col min-h-screen-stable",
       extendHeroUnderHeader
         ? "bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950"
         : "bg-neutral-950"
@@ -94,3 +94,10 @@ const {
     </script>
   </body>
 </html>
+
+<style>
+  .min-h-screen-stable {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+</style>

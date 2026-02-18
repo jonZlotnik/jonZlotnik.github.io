@@ -157,7 +157,7 @@ const origin = Astro.url.origin;
   description={cardDescription}
   image={ogImageUrl.toString()}
 >
-  <div class="container mx-auto px-4 py-8 min-h-[80vh]">
+  <div class="container mx-auto px-4 py-8 card-page-min-h">
     <div class="max-w-6xl mx-auto">
       <div class="mb-16 relative mx-auto" style="max-width:800px;">
         <!-- Previous Card Preview -->
@@ -232,3 +232,10 @@ const origin = Astro.url.origin;
     </div>
   </div>
 </MainLayout>
+
+<style>
+  .card-page-min-h {
+    min-height: 80vh;
+    min-height: 80svh;
+  }
+</style>
