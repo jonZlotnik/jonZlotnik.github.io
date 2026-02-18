@@ -468,6 +468,8 @@ const tagRows = Array.from({ length: 5 }, (_, i) =>
     DOMCache.isInitialized = false;
   }
 
+  let lastContainerWidth = 0;
+
   document.addEventListener("start-tags", () => {
     DOMCache.init();
     const tagsContainer = DOMCache.getContainer();
@@ -477,11 +479,20 @@ const tagRows = Array.from({ length: 5 }, (_, i) =>
     prepareTags();
     updateMasks();
     startAnimation();
+    lastContainerWidth = tagsContainer.offsetWidth || window.innerWidth;
   });
 
   window.addEventListener("resize", () => {
+    const containerElement = DOMCache.getContainer();
+    const currentWidth =
+      containerElement?.offsetWidth ?? window.innerWidth;
+
     updateMasks();
-    startAnimation();
+
+    if (currentWidth !== lastContainerWidth) {
+      lastContainerWidth = currentWidth;
+      startAnimation();
+    }
   });
 
   window.addEventListener("beforeunload", cleanupScrollingTags);
