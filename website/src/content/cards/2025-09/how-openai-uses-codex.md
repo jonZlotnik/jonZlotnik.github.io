@@ -3,6 +3,7 @@ title: 'How OpenAI uses Codex'
 pubDate: "2025-09-18T00:44:41.257Z"
 tags: ["openai", "vibe coding"]
 template: "vintage"
+draft: true
 ---
 
 ```json

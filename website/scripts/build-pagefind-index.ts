@@ -42,6 +42,8 @@ function readContentCollection(
       const content = readFileSync(filePath, "utf-8");
       const { data, content: body } = matter(content);
 
+      if (data.draft) continue;
+
       // Extract the ID (remove src/content/ and .md extension)
       const id = filePath
         .replace(fullPath, "")

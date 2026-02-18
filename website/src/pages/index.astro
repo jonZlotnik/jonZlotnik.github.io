@@ -10,6 +10,10 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
 import MainLayout from "@/layouts/MainLayout.astro";
 
 const allPosts = (await getCollection("blogs"))
+  .filter(
+    (post) =>
+      post.data.draft !== true && !post.id.endsWith("groq-code-cli-internal"),
+  )
   .map((post) => ({
     id: post.id,
     title: post.data.title,
@@ -18,11 +22,13 @@ const allPosts = (await getCollection("blogs"))
     tags: post.data.tags,
     updatedDate: post.data.updatedDate,
     author: post.data.author,
+    image: post.data.image,
     metadata: post.data.metadata,
   }))
   .sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());
 
 const allCards = (await getCollection("cards"))
+  .filter((card) => !card.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .map((card) => ({
     id: card.id,
@@ -32,7 +38,7 @@ const allCards = (await getCollection("cards"))
   }));
 
 const allSlides = (await getCollection("slides"))
-  .filter((slide) => slide.data.pubDate) // Filter out slides without pubDate
+  .filter((slide) => slide.data.pubDate && !slide.data.draft) // Filter out slides without pubDate or drafts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .map((slide) => ({
     id: slide.id,
@@ -45,10 +51,35 @@ const allSlides = (await getCollection("slides"))
     tags: slide.data.tags,
   }));
 
+// const SEED_TAGS = [
+//   "development",
+//   "design",
+//   "writing",
+//   "tools",
+//   "deployment",
+//   "AI",
+//   "automation",
+//   "open source",
+//   "tutorials",
+//   "notes",
+//   "presentations",
+//   "spreadsheets",
+//   "productivity",
+//   "code",
+//   "learning",
+//   "documentation",
+//   "APIs",
+//   "frontend",
+//   "backend",
+//   "infrastructure",
+// ];
+
+// Tags only from non-draft content (allPosts, allCards, allSlides are already draft-filtered above)
 const allTags = [
   ...allPosts.flatMap((post) => post.tags || []),
   ...allCards.flatMap((card) => card.tags || []),
   ...allSlides.flatMap((slide) => slide.tags || []),
+  // ...SEED_TAGS,
 ];
 const uniqueTags = [...new Set(allTags)];
 
@@ -59,7 +90,12 @@ const slides = allSlides.slice(0, 6);
 // Get active doodle
 const now = new Date();
 const activeDoodleEntry = (await getCollection("doodles"))
-  .filter((doodle) => doodle.data.pubDate <= now && doodle.data.endDate >= now)
+  .filter(
+    (doodle) =>
+      !doodle.data.draft &&
+      doodle.data.pubDate <= now &&
+      doodle.data.endDate >= now,
+  )
   .sort((a, b) => {
     return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
   })[0];
@@ -92,7 +128,7 @@ const activeDoodle = activeDoodleEntry
       {posts.map((blog) => <BlogCard blog={blog} />)}
     </LatestSection>
 
-    <ProductSection />
+    <!-- <ProductSection />
 
     <LatestSection
       title="Cards"
@@ -111,9 +147,9 @@ const activeDoodle = activeDoodleEntry
       }
     </LatestSection>
 
-    <ProductSection />
+    <ProductSection /> -->
 
-    <LatestSection
+    <!-- <LatestSection
       title="Slides"
       accentColor="text-cosmic"
       description="Interactive presentations crafted for developers."
@@ -128,6 +164,6 @@ const activeDoodle = activeDoodleEntry
           </a>
         ))
       }
-    </LatestSection>
+    </LatestSection> -->
   </div>
 </MainLayout>

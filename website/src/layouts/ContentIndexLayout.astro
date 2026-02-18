@@ -21,8 +21,18 @@ const page = Number(Astro.url.searchParams.get("page")) || 1;
 const limit = Number(Astro.url.searchParams.get("limit")) || defaultLimit;
 const tag = Astro.url.searchParams.get("tag");
 
-const sourceItems = await getCollection(collectionType);
+const sourceItems = (await getCollection(collectionType)).filter((item) => {
+  if (item.data.draft === true) return false;
+  // Fallback: hide known draft by id (e.g. if schema didn't apply)
+  if (
+    collectionType === "blogs" &&
+    item.id.endsWith("groq-code-cli-internal")
+  )
+    return false;
+  return true;
+});
 
+// Tag list only from non-draft items (sourceItems is draft-filtered above)
 const tags = sourceItems.flatMap((item) => item.data.tags || []);
 const tagCounts = tags.reduce(
   (acc, currentTag) => {

@@ -11,7 +11,8 @@
     "astro": "^5.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
+    "clean": "rm -rf .astro node_modules/.cache dist public/_pagefind",
+    "dev": "astro build && astro dev",
     "prebuild": "pnpm run build:search-index",
     "build": "astro build",
     "build:analyze": "ANALYZE=true astro build",

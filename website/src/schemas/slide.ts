@@ -25,4 +25,5 @@ export const SlideMetadata = z.object({
   transition: z.string().default("slide"),
   controls: z.boolean().default(true),
   progress: z.boolean().default(true),
+  draft: z.boolean().default(false),
 });

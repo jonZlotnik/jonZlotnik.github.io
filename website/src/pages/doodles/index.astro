@@ -6,6 +6,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import { formatDate } from "@/lib/utils";
 
 const doodles = (await getCollection("doodles"))
+  .filter((entry) => !entry.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .map((entry) => ({
     id: entry.id,

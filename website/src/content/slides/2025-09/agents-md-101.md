@@ -3,6 +3,7 @@ title: "AGENTS.md 101"
 author: "foxgem"
 description: "A small introduction to agents.md."
 pubDate: 2025-09-10
+draft: true
 tags: ["agent"]
 theme: "beige"
 transition: "slide"

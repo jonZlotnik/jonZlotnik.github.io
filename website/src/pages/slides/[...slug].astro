@@ -14,7 +14,9 @@ import { formatDate } from "@/lib/utils";
 
 // add all slides to sitemap
 sitemap(async ({ addToSitemap }) => {
-  const slides = await getCollection("slides");
+  const slides = (await getCollection("slides")).filter(
+    (slide) => !slide.data.draft,
+  );
 
   addToSitemap(
     slides.map((slide) => ({
@@ -37,8 +39,10 @@ if (!slide) {
   return Astro.redirect("/404");
 }
 
-// Get navigation data
-const allSlides = await getCollection("slides");
+// Get navigation data (exclude drafts)
+const allSlides = (await getCollection("slides")).filter(
+  (s) => !s.data.draft,
+);
 const adjacentContent = getAdjacentContent(allSlides, slide.id);
 
 const ogImageUrl = new URL("/og-enhanced", Astro.url);

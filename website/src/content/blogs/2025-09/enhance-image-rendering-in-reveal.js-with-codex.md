@@ -4,6 +4,7 @@ pubDate: "2025-09-22T16:47:25+08:00"
 author: "冯宇 胡键"
 description: "在使用 Astro 集成 Reveal.js 过程中，为了让 Markdown Slides 中的图片更加 Astro Native，我们利用 Codex CLI 分析并解决了问题。"
 tags: ["ai", "web", "vibe-coding", "coding-cli"]
+draft: true
 ---
 
 【注：冯宇提供第一版，胡键在此基础上补充整个过程的前因后果且重新梳理文字和格式。】

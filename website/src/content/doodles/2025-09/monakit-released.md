@@ -1,5 +1,6 @@
 ---
 title: "MonaKit Released as an Astro Theme"
+draft: true
 description: "We released MonaKit, a free and open-source Astro theme featuring multi-format content."
 pubDate: 2025-09-25
 endDate: 2025-10-01

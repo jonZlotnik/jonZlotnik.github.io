@@ -11,7 +11,9 @@ import { getAdjacentContent } from "@/lib/navigation";
 import "@/styles/article.css";
 
 sitemap(async ({ addToSitemap }) => {
-  const doodles = await getCollection("doodles");
+  const doodles = (await getCollection("doodles")).filter(
+    (item) => !item.data.draft,
+  );
 
   addToSitemap(
     doodles.map((item) => ({
@@ -40,7 +42,9 @@ const origin = Astro.url.origin;
 const title = doodle.data.title;
 const description = doodle.data.description || SITE_DESCRIPTION;
 const pageTitle = `${title} | ${SITE_TITLE}`;
-const allDoodles = await getCollection("doodles");
+const allDoodles = (await getCollection("doodles")).filter(
+  (d) => !d.data.draft,
+);
 const adjacentContent = getAdjacentContent(allDoodles, doodle.id);
 ---
 

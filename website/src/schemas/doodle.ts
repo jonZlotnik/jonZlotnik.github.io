@@ -5,6 +5,7 @@ export const DoodleMetadata = z.object({
   description: z.string(),
   pubDate: z.coerce.date(),
   endDate: z.coerce.date(),
+  draft: z.boolean().default(false),
 });
 
 export type Doodle = z.infer<typeof DoodleMetadata>;
