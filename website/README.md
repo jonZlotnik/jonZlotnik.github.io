@@ -1,61 +1,41 @@
-# MonaKit
+# Jon Zlotnik — personal site (Astro)
 
-Multi-format content platform built with Astro, featuring knowledge cards, articles, presentations, and announcements.
+Personal homepage and publishing stack on Astro 5 + React islands where needed.
 
-## Features
+## Goals
 
-- **Knowledge Cards** - Research summaries with customizable themes
-- **Articles** - Long-form blog content
-- **Slide Presentations** - Interactive reveal.js presentations
-- **Doodles** - Release logs and announcements (Mona Pulse)
-- **Search** - Full-text search with Pagefind
-- **Promotion** - Product and link showcase
+Local-first authoring in Markdown (`src/content/`), light homepage data in [`src/data/site.ts`](src/data/site.ts), and a practical path for photos/video through a bucket when ready.
 
-## Tech Stack
+See:
 
-- Astro 5 (SSR)
-- React 19
-- TailwindCSS 4
-- Reveal.js
-- Pagefind
-
-## Quick Start
-
-```bash
-npm create astro@latest my-astro-project -- --template monakit/monakit
-```
+- **[`docs/content.md`](docs/content.md)** — contacts, homepage copy, projects, writing, media collections.
+- **[`docs/media-publishing.md`](docs/media-publishing.md)** — Syncthing vs public R2, Darktable, Insta360/drone workflows, ops checklist.
 
 ## Development
 
+Prerequisites: Node 20+, recommended `pnpm` (repository uses lockfile tooling).
+
 ```bash
 pnpm install
-cp .env.example .env
-pnpm migrate
-pnpm dev
+pnpm dev       # wraps build + astro dev per package.json
 ```
 
-### Available Scripts
+Other scripts:
 
 ```bash
-pnpm dev                # Start dev server
-pnpm build              # Production build (auto-builds search index)
-pnpm build:search-index # Build search index manually
-pnpm check              # Type check and lint
-pnpm fix                # Auto-fix issues
+pnpm build     # runs search index pre-step then astro build
+pnpm check     # astro check + biome — may warn on existing Tailwind/Biome config
 ```
 
-## Content Structure
+### Environment variables (names only)
 
-```
-src/content/
-├── cards/    # Knowledge cards (Markdown)
-├── blogs/    # Blog articles (Markdown)
-├── slides/   # Presentations (Markdown)
-└── doodles/  # Announcements (Markdown)
-```
+| Name | Purpose |
+|------|---------|
+| `SITE_URL` | Canonical site URL for Astro `site` meta and feeds (defaults to localhost in [`src/env.ts`](src/env.ts)). |
+| Deploy provider secrets | Set in Vercel/hosting dashboard as required for previews and CI (exact keys depend on your pipeline). |
 
-Content organized by year/month subdirectories.
+No secret values belong in Markdown or commits.
 
-## Product Data
+## Validation
 
-All products data is defined in `src/assets/creations.json`.
+Prefer `pnpm build` or `npx astro build`. If Biome conflicts with Tailwind/CSS in your tree, isolate with `npx astro build` for HTML/content validation.

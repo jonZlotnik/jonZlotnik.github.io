@@ -40,9 +40,7 @@ if (!slide) {
 }
 
 // Get navigation data (exclude drafts)
-const allSlides = (await getCollection("slides")).filter(
-  (s) => !s.data.draft,
-);
+const allSlides = (await getCollection("slides")).filter((s) => !s.data.draft);
 const adjacentContent = getAdjacentContent(allSlides, slide.id);
 
 const ogImageUrl = new URL("/og-enhanced", Astro.url);

@@ -4,6 +4,23 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  /* Personal site — page chrome, surfaces, and type colors (see :root[data-theme="dark"]) */
+  --site-bg: #f6f0e7;
+  --site-surface: rgb(255 250 242 / 0.7);
+  --site-surface-strong: #fffaf2;
+  --site-ink: #211b16;
+  --site-ink-strong: #1f1914;
+  --site-body: #5f5248;
+  --site-muted: #7d6d5f;
+  --site-accent: #8a6f58;
+  --site-accent-soft: rgb(138 111 88 / 0.3);
+  --site-rule: rgb(33 27 22 / 0.1);
+  --site-shadow: rgb(61 45 31 / 0.12);
+  --site-glow-warm: rgb(216 185 153 / 0.25);
+  --site-glow-cool: rgb(154 160 137 / 0.2);
+  --site-tile-warm: #d8b999;
+  --site-tile-cool: #65726b;
+
   --background: 0 0% 4.9%;
   --foreground: 0 0% 98%;
   --card: 0 0% 4.9%;
@@ -36,7 +53,7 @@
   --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.08);
 
-  /* Grayscale tea/teahouse palette – dark theme (oklch L 0 0) */
+  /* Legacy grayscale tokens (--tea-*) — kept for Tailwind theme aliases / older components */
   --tea-main: oklch(13% 0 0);
   --tea-main-light: oklch(30% 0 0);
   --tea-secondary: oklch(58% 0 0);
@@ -45,6 +62,25 @@
   --tea-gray: oklch(88% 0 0);
   --tea-gray-light: oklch(62% 0 0);
   --tea-light-alpha: oklch(25% 0 0 / 0.5);
+}
+
+:root[data-theme="dark"] {
+  /* Personal site — dark palette */
+  --site-bg: #15110e;
+  --site-surface: rgb(36 30 24 / 0.72);
+  --site-surface-strong: #2d251d;
+  --site-ink: #f3eadc;
+  --site-ink-strong: #fff7ea;
+  --site-body: #c3b5a3;
+  --site-muted: #a99885;
+  --site-accent: #c4a474;
+  --site-accent-soft: rgb(196 164 116 / 0.28);
+  --site-rule: rgb(243 234 220 / 0.12);
+  --site-shadow: rgb(0 0 0 / 0.34);
+  --site-glow-warm: rgb(196 164 116 / 0.14);
+  --site-glow-cool: rgb(91 112 109 / 0.18);
+  --site-tile-warm: #6b573f;
+  --site-tile-cool: #394946;
 }
 
 .dark {
@@ -69,7 +105,7 @@
   --ring: 0 0% 75%;
 }
 
-.mona {
+.site-root {
   --primary: 0 0% 75%;
   --nebula: 0 0% 55%;
   --solar: 0 0% 60%;
@@ -115,6 +151,7 @@ pre.mermaid {
   --color-nebula: hsl(var(--nebula));
   --color-solar: hsl(var(--solar));
   --color-cosmic: hsl(var(--cosmic));
+  /* teahouse-* color utilities map to legacy --tea-* tokens */
   --color-teahouse-bg: var(--tea-bg);
   --color-teahouse-primary: var(--tea-secondary);
   --color-teahouse-dark: var(--tea-main);
@@ -127,7 +164,8 @@ pre.mermaid {
   }
 
   body {
-    @apply bg-neutral-950 text-neutral-100;
+    background-color: var(--site-bg);
+    color: var(--site-ink);
   }
 }
 
@@ -228,8 +266,6 @@ pre.mermaid {
 .hover-lift:hover {
   transform: translateY(-4px);
 }
-
-/* old */
 
 .container {
   @apply mx-auto;

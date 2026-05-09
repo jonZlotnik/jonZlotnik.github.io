@@ -3,7 +3,10 @@ import { glob } from "astro/loaders";
 import { BlogMetadata } from "./schemas/blog";
 import { CardMetadata } from "./schemas/card";
 import { DoodleMetadata } from "./schemas/doodle";
+import { PhotoSetMetadata } from "./schemas/photoSet";
+import { ProjectMetadata } from "./schemas/project";
 import { SlideMetadata } from "./schemas/slide";
+import { VideoClipMetadata } from "./schemas/videoClip";
 
 const blogs = defineCollection({
   loader: glob({
@@ -28,4 +31,27 @@ const doodles = defineCollection({
   schema: DoodleMetadata,
 });
 
-export const collections = { blogs, cards, slides, doodles };
+const projects = defineCollection({
+  loader: glob({ base: "./src/content/projects", pattern: "**/*.{md,mdx}" }),
+  schema: ProjectMetadata,
+});
+
+const photoSets = defineCollection({
+  loader: glob({ base: "./src/content/photo-sets", pattern: "**/*.{md,mdx}" }),
+  schema: PhotoSetMetadata,
+});
+
+const videoClips = defineCollection({
+  loader: glob({ base: "./src/content/video-clips", pattern: "**/*.{md,mdx}" }),
+  schema: VideoClipMetadata,
+});
+
+export const collections = {
+  blogs,
+  cards,
+  slides,
+  doodles,
+  projects,
+  photoSets,
+  videoClips,
+};

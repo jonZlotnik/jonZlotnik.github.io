@@ -24,10 +24,7 @@ const tag = Astro.url.searchParams.get("tag");
 const sourceItems = (await getCollection(collectionType)).filter((item) => {
   if (item.data.draft === true) return false;
   // Fallback: hide known draft by id (e.g. if schema didn't apply)
-  if (
-    collectionType === "blogs" &&
-    item.id.endsWith("groq-code-cli-internal")
-  )
+  if (collectionType === "blogs" && item.id.endsWith("groq-code-cli-internal"))
     return false;
   return true;
 });

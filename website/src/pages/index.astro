@@ -1,12 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import BlogCard from "@/components/blog/BlogCard.astro";
-import CardCover from "@/components/knowledge-card/CardCover.astro";
 import HeroSection from "@/components/landing-page/HeroSection.astro";
-import LatestSection from "@/components/landing-page/LatestSection.astro";
-import ProductSection from "@/components/ProductSection.astro";
-import SlideCard from "@/components/slide/SlideCard.astro";
+import OptimizedImage from "@/components/OptimizedImage.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
+import { ABOUT, HOME_SECTIONS } from "@/data/site";
 import MainLayout from "@/layouts/MainLayout.astro";
 
 const allPosts = (await getCollection("blogs"))
@@ -27,143 +24,209 @@ const allPosts = (await getCollection("blogs"))
   }))
   .sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());
 
-const allCards = (await getCollection("cards"))
-  .filter((card) => !card.data.draft)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .map((card) => ({
-    id: card.id,
-    title: card.data.title,
-    template: card.data.template,
-    tags: card.data.tags,
-  }));
+const previewPhotoSets = (await getCollection("photoSets"))
+  .filter((entry) => !entry.data.draft)
+  .sort(
+    (a, b) =>
+      (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0),
+  )
+  .slice(0, 2);
 
-const allSlides = (await getCollection("slides"))
-  .filter((slide) => slide.data.pubDate && !slide.data.draft) // Filter out slides without pubDate or drafts
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .map((slide) => ({
-    id: slide.id,
-    title: slide.data.title,
-    description: slide.data.description,
-    author: slide.data.author,
-    transition: slide.data.transition,
-    theme: slide.data.theme,
-    pubDate: slide.data.pubDate,
-    tags: slide.data.tags,
-  }));
-
-// const SEED_TAGS = [
-//   "development",
-//   "design",
-//   "writing",
-//   "tools",
-//   "deployment",
-//   "AI",
-//   "automation",
-//   "open source",
-//   "tutorials",
-//   "notes",
-//   "presentations",
-//   "spreadsheets",
-//   "productivity",
-//   "code",
-//   "learning",
-//   "documentation",
-//   "APIs",
-//   "frontend",
-//   "backend",
-//   "infrastructure",
-// ];
-
-// Tags only from non-draft content (allPosts, allCards, allSlides are already draft-filtered above)
-const allTags = [
-  ...allPosts.flatMap((post) => post.tags || []),
-  ...allCards.flatMap((card) => card.tags || []),
-  ...allSlides.flatMap((slide) => slide.tags || []),
-  // ...SEED_TAGS,
-];
-const uniqueTags = [...new Set(allTags)];
+const previewVideoClips = (await getCollection("videoClips"))
+  .filter((entry) => !entry.data.draft)
+  .sort(
+    (a, b) =>
+      (b.data.pubDate?.valueOf() ?? 0) - (a.data.pubDate?.valueOf() ?? 0),
+  )
+  .slice(0, 2);
 
 const posts = allPosts.slice(0, 3);
-const cards = allCards.slice(0, 6);
-const slides = allSlides.slice(0, 6);
 
-// Get active doodle
-const now = new Date();
-const activeDoodleEntry = (await getCollection("doodles"))
-  .filter(
-    (doodle) =>
-      !doodle.data.draft &&
-      doodle.data.pubDate <= now &&
-      doodle.data.endDate >= now,
-  )
-  .sort((a, b) => {
-    return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
-  })[0];
-
-const activeDoodle = activeDoodleEntry
-  ? {
-      ...activeDoodleEntry.data,
-      href: `/doodles/${activeDoodleEntry.id}`,
-    }
-  : undefined;
+const HS = HOME_SECTIONS;
 ---
 
 <MainLayout
   title={`Home | ${SITE_TITLE}`}
   description={SITE_DESCRIPTION}
   className="w-full p-0"
-  extendHeroUnderHeader
 >
-  <HeroSection uniqueTags={uniqueTags} doodle={activeDoodle} />
+  <HeroSection />
 
-  <div class="bg-neutral-950 px-4 md:px-6">
-    <LatestSection
-      title="Articles"
-      accentColor="text-nebula"
-      description="Fresh insights and lessons from our recent explorations."
-      viewAllHref="/blogs"
-      viewAllText="View All Articles"
-      viewAllButtonWidth="165px"
-    >
-      {posts.map((blog) => <BlogCard blog={blog} />)}
-    </LatestSection>
+  <div class="bg-[var(--site-bg)] px-5 pb-20 text-[var(--site-ink)] transition-colors duration-300 md:px-8">
+    <section class="mx-auto grid max-w-6xl gap-8 border-t border-[var(--site-rule)] py-16 md:grid-cols-[0.72fr_1fr] md:items-center">
+      <div class="max-w-xs">
+        <div class="overflow-hidden rounded-[2rem] border border-[var(--site-rule)] bg-[var(--site-surface)] p-2 shadow-[0_18px_60px_var(--site-shadow)]">
+          <OptimizedImage
+            src="/src/assets/images/profilepic-meh-2.jpg"
+            alt={ABOUT.portraitAlt}
+            inferSize={true}
+            class="w-full rounded-[1.55rem] opacity-95"
+          />
+        </div>
+      </div>
 
-    <!-- <ProductSection />
+      <div>
+        <p class="text-xs uppercase tracking-[0.3em] text-[var(--site-accent)]">
+          {ABOUT.sectionLabel}
+        </p>
+        <h2 class="mt-4 max-w-2xl text-4xl font-medium tracking-[-0.05em]">
+          {ABOUT.headline}
+        </h2>
+        <p class="mt-5 max-w-2xl text-base leading-7 text-[var(--site-body)]">
+          {ABOUT.body}
+        </p>
+      </div>
+    </section>
 
-    <LatestSection
-      title="Cards"
-      accentColor="text-solar"
-      description="Check out our quick notes and summaries"
-      viewAllHref="/cards"
-      viewAllText="View All Cards"
-      viewAllButtonWidth="154px"
-    >
-      {
-        cards.map((card) => (
-          <a href={`/cards/${card.id}`}>
-            <CardCover title={card.title} template={card.template} />
-          </a>
-        ))
-      }
-    </LatestSection>
+    <section class="mx-auto grid max-w-6xl gap-5 border-t border-[var(--site-rule)] py-16 md:grid-cols-3">
+      <div>
+        <p class="text-xs uppercase tracking-[0.3em] text-[var(--site-accent)]">
+          {HS.explore.label}
+        </p>
+        <h2 class="mt-4 text-3xl font-medium tracking-[-0.04em]">
+          {HS.explore.headline}
+        </h2>
+      </div>
 
-    <ProductSection /> -->
+      <a href={HS.projectsCard.href} class="group rounded-[2rem] border border-[var(--site-rule)] bg-[var(--site-surface)] p-6 transition hover:-translate-y-1 hover:bg-[var(--site-surface-strong)]">
+        <p class="text-sm uppercase tracking-[0.24em] text-[var(--site-accent)]">
+          {HS.projectsCard.kicker}
+        </p>
+        <h3 class="mt-10 text-2xl font-medium tracking-[-0.035em]">
+          {HS.projectsCard.title}
+        </h3>
+        <p class="mt-3 text-sm leading-6 text-[var(--site-body)]">
+          {HS.projectsCard.description}
+        </p>
+        <span class="mt-8 inline-block text-sm text-[var(--site-accent)] transition group-hover:translate-x-1">
+          {HS.projectsCard.linkText}
+        </span>
+      </a>
 
-    <!-- <LatestSection
-      title="Slides"
-      accentColor="text-cosmic"
-      description="Interactive presentations crafted for developers."
-      viewAllHref="/slides"
-      viewAllText="View All Slides"
-      viewAllButtonWidth="155px"
-    >
-      {
-        slides.map((slide) => (
-          <a href={`/slides/${slide.id}`}>
-            <SlideCard slide={slide} />
-          </a>
-        ))
-      }
-    </LatestSection> -->
+      <a href={HS.writingCard.href} class="group rounded-[2rem] border border-[var(--site-rule)] bg-[var(--site-surface)] p-6 transition hover:-translate-y-1 hover:bg-[var(--site-surface-strong)]">
+        <p class="text-sm uppercase tracking-[0.24em] text-[var(--site-accent)]">
+          {HS.writingCard.kicker}
+        </p>
+        <h3 class="mt-10 text-2xl font-medium tracking-[-0.035em]">
+          {HS.writingCard.title}
+        </h3>
+        <p class="mt-3 text-sm leading-6 text-[var(--site-body)]">
+          {HS.writingCard.description}
+        </p>
+        <span class="mt-8 inline-block text-sm text-[var(--site-accent)] transition group-hover:translate-x-1">
+          {HS.writingCard.linkText}
+        </span>
+      </a>
+    </section>
+
+    <section class="mx-auto grid max-w-6xl gap-8 border-t border-[var(--site-rule)] py-16 lg:grid-cols-[0.9fr_1.1fr]">
+      <div>
+        <p class="text-xs uppercase tracking-[0.3em] text-[var(--site-accent)]">
+          {HS.media.label}
+        </p>
+        <h2 class="mt-4 max-w-md text-4xl font-medium tracking-[-0.05em]">
+          {HS.media.headline}
+        </h2>
+        <p class="mt-5 max-w-md text-base leading-7 text-[var(--site-body)]">
+          {HS.media.body}
+        </p>
+
+        {
+          previewPhotoSets.length + previewVideoClips.length > 0 ? (
+            <div class="mt-6 space-y-4 text-sm text-[var(--site-body)]">
+              {previewPhotoSets.length > 0 && (
+                <div class="rounded-2xl border border-[var(--site-rule)] bg-[var(--site-surface)] p-5">
+                  <p class="text-xs uppercase tracking-[0.26em] text-[var(--site-muted)]">Photo sets</p>
+                  <ul class="mt-3 list-none space-y-2">
+                    {previewPhotoSets.map((s) => (
+                      <li>
+                        <span class="font-medium text-[var(--site-ink)]">{s.data.title}</span>
+                        {s.data.pubDate ? (
+                          <span class="block text-xs text-[var(--site-muted)]">
+                            {s.data.pubDate.toLocaleDateString("en", { year: "numeric", month: "short" })}
+                          </span>
+                        ) : (
+                          ""
+                        )}
+                        <span class="mt-1 block text-[var(--site-body)]">{s.data.summary}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {previewVideoClips.length > 0 && (
+                <div class="rounded-2xl border border-[var(--site-rule)] bg-[var(--site-surface)] p-5">
+                  <p class="text-xs uppercase tracking-[0.26em] text-[var(--site-muted)]">Video clips</p>
+                  <ul class="mt-3 list-none space-y-2">
+                    {previewVideoClips.map((v) => (
+                      <li>
+                        <span class="font-medium text-[var(--site-ink)]">{v.data.title}</span>
+                        {v.data.gear ? (
+                          <span class="block text-xs text-[var(--site-muted)]">{v.data.gear}</span>
+                        ) : (
+                          ""
+                        )}
+                        <span class="mt-1 block text-[var(--site-body)]">{v.data.summary}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          ) : (
+            <p class="mt-6 max-w-md text-sm leading-6 text-[var(--site-muted)]">
+              {HS.media.placeholdersNote}
+            </p>
+          )
+        }
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 sm:gap-4">
+        <div class="aspect-[4/5] rounded-[2rem] bg-[var(--site-tile-warm)]"></div>
+        <div class="aspect-[4/5] rounded-[2rem] bg-[#2f4448]"></div>
+        <div class="aspect-[4/3] rounded-[2rem] bg-[var(--site-surface-strong)]"></div>
+        <div class="aspect-[4/3] rounded-[2rem] bg-[var(--site-tile-cool)]"></div>
+      </div>
+    </section>
+
+    {
+      posts.length > 0 && (
+        <section class="mx-auto max-w-6xl border-t border-[var(--site-rule)] py-16">
+          <div class="mb-8 flex items-end justify-between gap-6">
+            <div>
+              <p class="text-xs uppercase tracking-[0.3em] text-[var(--site-accent)]">
+                {HS.latestWriting.sectionLabel}
+              </p>
+              <h2 class="mt-4 text-3xl font-medium tracking-[-0.04em]">
+                {HS.latestWriting.headline}
+              </h2>
+            </div>
+            <a href={HS.latestWriting.allLinkHref} class="text-sm text-[var(--site-accent)] hover:text-[var(--site-ink)]">
+              {HS.latestWriting.allLinkText}
+            </a>
+          </div>
+
+          <div class="grid gap-3 md:grid-cols-3">
+            {posts.map((post) => (
+              <a href={`/blogs/${post.id}`} class="rounded-[1.5rem] border border-[var(--site-rule)] bg-[var(--site-surface)] p-5 transition hover:-translate-y-1 hover:bg-[var(--site-surface-strong)]">
+                <p class="text-xs uppercase tracking-[0.2em] text-[var(--site-accent)]">
+                  {post.pubDate.toLocaleDateString("en", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </p>
+                <h3 class="mt-5 text-xl font-medium tracking-[-0.03em]">
+                  {post.title}
+                </h3>
+                <p class="mt-3 line-clamp-3 text-sm leading-6 text-[var(--site-body)]">
+                  {post.description}
+                </p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
   </div>
 </MainLayout>

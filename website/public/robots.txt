@@ -11,4 +11,4 @@ Allow: /rss.xml
 Allow: /sitemap-index.xml
 
 # Sitemap locations
-Sitemap: https://www.mymona.xyz/sitemap-index.xml
+Sitemap: https://jonZlotnik.github.io/sitemap-index.xml

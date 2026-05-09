@@ -1,13 +1,15 @@
 ---
 import { z } from "astro:content";
+import { THEME } from "@/data/site";
 import { cn } from "@/lib/utils";
 import type { SlideMetadata } from "@/schemas/slide";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
 import { Toaster } from "../components/ui/sonner";
 
 import "../styles/global.css";
+
+const themeStorageKey = THEME.storageKey;
 
 interface Props {
   title: string;
@@ -23,8 +25,6 @@ interface Props {
   section?: string;
   tags?: string[];
   revealTheme?: z.infer<typeof SlideMetadata>["theme"];
-  /** When true, uses hero gradient behind header (for home/landing). */
-  extendHeroUnderHeader?: boolean;
 }
 
 const {
@@ -41,13 +41,36 @@ const {
   section,
   tags,
   revealTheme,
-  extendHeroUnderHeader = false,
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="mona">
+<html lang="en" class="site-root">
   <head>
+    <!-- Theme before paint — matches footer control (THEME.storageKey). -->
+    <script is:inline define:vars={{ themeStorageKey }}>
+      (function () {
+        var KEY = themeStorageKey;
+        var pref =
+          typeof localStorage !== "undefined" ? localStorage.getItem(KEY) : null;
+
+        function isDark(mode) {
+          if (mode === "dark") return true;
+          if (mode === "light") return false;
+          try {
+            return window.matchMedia("(prefers-color-scheme: dark)").matches;
+          } catch (_) {
+            return false;
+          }
+        }
+
+        var mode =
+          pref === "light" || pref === "dark"
+            ? pref
+            : "system";
+        document.documentElement.dataset.theme = isDark(mode) ? "dark" : "light";
+      })();
+    </script>
     <BaseHead
       title={title}
       description={description}
@@ -72,14 +95,10 @@ const {
   </head>
   <body>
     <div
-    class={cn(
-      "flex flex-col min-h-screen-stable",
-      extendHeroUnderHeader
-        ? "bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950"
-        : "bg-neutral-950"
-    )}
-  >
-      <Header />
+      class={cn(
+        "flex min-h-screen-stable flex-col bg-[var(--site-bg)] text-[var(--site-ink)] transition-colors duration-300",
+      )}
+    >
       <main class="flex-1">
         <div class={cn(className ? className : "container p-3 md:p-5 mx-auto")}>
           <slot />

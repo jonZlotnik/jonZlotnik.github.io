@@ -45,10 +45,12 @@ export interface SlideTheme {
   overlayColor: string;
 }
 
-export const SITE_TITLE = "MONA";
-export const SITE_DESCRIPTION = "Mona — Learn from What We Build";
+export const SITE_TITLE = "Jon Zlotnik";
+export const SITE_DESCRIPTION =
+  "Software, photography, scuba, writing, and personal projects by Jon Zlotnik.";
 
-export const PROD_URL = "https://www.mymona.xyz";
+/** Production site origin — GitHub Pages for this repo. */
+export const PROD_URL = "https://jonZlotnik.github.io";
 
 export const isProdEnv = () => {
   if (import.meta.env?.PROD || import.meta.env?.MODE === "production") {
@@ -92,7 +94,8 @@ export const MENU_ITEMS: MenuItem[] = [
     label: "Cards",
     href: "/cards",
     title: "Cards",
-    description: "Developer-Gathered, AI-Crafted, Human-Checked.",
+    description:
+      "Short knowledge cards distilled from readings and experiments.",
   },
   {
     id: "slides",

@@ -60,9 +60,7 @@ if (cardParsedData?.mermaidMarkdown) {
 }
 
 // Get all cards for navigation and recommendations (exclude drafts so their tags don't affect related cards)
-const allCards = (await getCollection("cards")).filter(
-  (c) => !c.data.draft,
-);
+const allCards = (await getCollection("cards")).filter((c) => !c.data.draft);
 const currentCardTags = card.data.tags;
 
 // Sort cards by publication date (newest first) for navigation
